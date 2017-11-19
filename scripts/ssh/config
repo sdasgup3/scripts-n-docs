@@ -1,0 +1,21 @@
+Host nix-presto
+  User nix-ssh
+  IdentityFile ~/.ssh/nix-ssh-key
+  Hostname presto.cs.illinois.edu
+
+Host presto
+  HostName presto.cs.illinois.edu
+  User sdasgup3
+
+Host asha
+  HostName asha.cs.illinois.edu
+  User sdasgup3
+
+Host commando
+  HostName commando.cs.illinois.edu
+  User sdasgup3
+
+Host github.com
+  HostName github.com
+  IdentityFile ~/.ssh/github.key_rsa
+  

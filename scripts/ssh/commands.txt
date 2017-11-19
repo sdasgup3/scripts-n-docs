@@ -1,0 +1,15 @@
+ ssh -Y sdasgup3@taub.campuscluster.illinois.edu
+ ssh -Y sdasgup3@remlnx.ews.illinois.edu
+ ssh -Y sdasgup3@tarekc01.cs.uiuc.edu
+ ssh -Y sdasgup3@tarekc41.cs.illinois.edu
+
+ ssh -Y sdasgup3@asha.cs.illinois.edu
+ ssh -Y sdasgup3@commando.cs.illinois.edu
+ ssh -Y sdasgup3@presto.cs.illinois.edu
+ ssh -Y sdasgup3@maute.cs.illinois.edu
+ ssh -Y sdasgup3@burman.cs.illinois.edu
+ ssh -Y sdasgup3@anand.cs.illinois.edu
+ ssh sdasgup3@tarekc41.cs.illinois.edu
+
+ ssh -Y sdasgup3@web.engr.illinois.edu
+
