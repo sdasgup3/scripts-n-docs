@@ -21,6 +21,7 @@
   ```
   for file in  $(find . -name "*lifted.exe"); do parent=$(echo $file | sed -e 's/McSemaOutput//g');  cp $file $parent; done
   ```
+- Delete Empty lines: `sed '/^\s*$/d'`
 
 ## Split string
 ```
