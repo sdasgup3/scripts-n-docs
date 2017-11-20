@@ -1,4 +1,4 @@
-###General tips
+### General tips
 - `ret=$(shell cmd)`: Execute any shell command.
 - `cat -e -t Makefile` shows the presence of tabs with ^I and line endings with $.
 - `PRECIOUS: %.o` : Prevents deletion of temporary files (as determined by Makefile system).
