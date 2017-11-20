@@ -5,7 +5,9 @@ set verbose off
 set disassemble-next-line on
 
 define process_instr
-    printf "RAX: (0x%X)\n",$rax
+    p $rax
+    p $rcx
+    p $eflags
 end
 
 define nstep
@@ -16,6 +18,7 @@ define nstep
  end
 end
 
-start
-nstep 10
+b _start
+r
+nstep 3
 q
