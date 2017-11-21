@@ -5,6 +5,66 @@
 - `make VERBOSE=1` or In cmake, set `CMAKE_VERBOSE_MAKEFILE to ON`.
 - By default, `parallel make` will stop if on `make` fails. Use `make -k` to override (k: continue).
 
+## Parallel Invoke
+### On Directories
+```
+TESTS=$(shell find . -maxdepth 1  -type d -name "test_*" | sort -V)
+.PHONY:	${TESTS}  all clean x86states kstates compare allclean cleanxstate cleankstate
+SUB_TARGET=all
+
+all: ${TESTS}
+
+${TESTS}:
+	@${MAKE} -C $@ $(MAKECMDGOALS)
+
+all allclean xstate kstate compare cleanxstate cleankstate: ${TESTS}
+```
+### Within each directory on each file
+```
+TESTS=$(shell find . -maxdepth 1   -name "*.s" | sort -V)
+
+OUTDIR=Output
+# The following are just labels
+KSTATES=$(patsubst %.s, %.kstate, $(TESTS))
+XSTATES=$(patsubst %.s, %.xstate, $(TESTS))
+CSTATES=$(patsubst %.s, %.cstate, $(TESTS))
+
+Mkdir=@mkdir -p $(@D)
+RUN_SH=../../scripts/run.pl
+
+
+.PHONY:	${TESTS}  all allclean xstate kstate compare cleanxstate cleankstate
+
+all:	kstate xstate compare
+
+kstate: ${KSTATES}
+xstate: ${XSTATES}
+compare:${CSTATES}
+
+%.kstate: %.s
+	$(Mkdir)
+	touch  ${OUTDIR}/$@
+
+
+%.xstate: %.s
+	touch  ${OUTDIR}/$@
+
+%.cstate: ${OUTDIR}/%.kstate ${OUTDIR}/%.xstate
+	@echo "Compare"
+
+allclean:
+	@echo "All Cleaning"
+
+cleankstate:
+	@echo "K Cleaning"
+	@rm -rf ${OUTDIR}/*.kstate
+
+cleanxstate:
+	@echo "X Cleaning"
+	@rm -rf ${OUTDIR}/*.xstate
+```
+
+
 ### Makefile variables
 ```
 target: prerequisites
@@ -18,6 +78,7 @@ $^ == all members of prerequisites
 ```
 SRCS=$(shell find .  -name "*.cpp" | sort -V)
 OBJS=$(patsubst %.cpp, %.o, $(SRCS))
+OBJS = $(SRCS:$(A)/%.cpp=$(B)/%.o)
 ```
 Now if we want to take some action foreach members of $(OBJS), then
 ```
