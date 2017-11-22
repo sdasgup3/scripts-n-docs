@@ -5,10 +5,15 @@ use strict;
 use warnings;
 use Getopt::Long;
 use File::Compare;
+use File::Basename;
 use File::chdir;
 use Cwd;
 use File::Path qw(make_path remove_tree);
 use Env;
+
+# Using some perl lib
+use lib qw( /home/sdasgup3/Github/binary-decompilation/test/utils/ );
+use utils;
 
 # Get environment Variable
 my $home = $ENV{'HOME'};
@@ -34,8 +39,7 @@ if ( "" ne $help ) {
     exit(0);
 }
 
-
-# Execute shell commands
+# execute shell commands
 system("touch $file");
 
 # File Open
@@ -47,8 +51,8 @@ for my $line (@lines) {
 system("rm $file");
 
 # File exist
-my $dir  = "";
-if ( ( -e $file ) and ( -d $dir ) ) {
+my $sdir = "";
+if ( ( -e $file ) and ( -d $sdir ) ) {
 }
 
 # Subroutine
@@ -59,9 +63,17 @@ sub execute {
 # Hash / Map Usage
 my %tool_path;
 $tool_path{'llvm'} = "$home";
+my $lenhash = scalar keys %tool_path;;
+
+# Concatenate Print
+print "\n". $lenhash. "\n";
 
 # Array Usage
 my @maindirs = ( "llvm", );
 my @all      = ();
 push( @all, @maindirs );
 push( @all, "clang" );
+
+# Using fileparse
+my ( $bin, $dir, $ext ) = fileparse( "a/b/c.cpp", qr/\.[^.]*/ );
+print "$dir$bin$ext" . "\n";
