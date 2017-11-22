@@ -16,7 +16,7 @@ K=${HOME}/Github/k/k-distribution/target/release/k/
 IDA=${HOME}/ida-6.95/
 
 export PATH=${IDA}:${K}/bin/:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:${LLVM_HOME}/bin:$PATH
-export LD_LIBRARY_PATH=${K}/lib:${OPROFILE}/lib/:${PIP_INSTALLS}/lib:${LLVM_HOME}/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=${K}/lib:${OPROFILE}/lib/:${PIP_INSTALLS}/lib:${LLVM_HOME}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
 export R_LIBS=${HOME}/Install/R_LIBS/
 export MCSEMA_HOME=${HOME}/Github/mcsema_latest_master/
 export TRAILOFBITS_LIBRARIES=/home/sdasgup3/Github/cxx-common/libraries

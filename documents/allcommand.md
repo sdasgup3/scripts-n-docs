@@ -880,6 +880,13 @@ Cntrl-a d // detach
 Cntrl-a :quit //kill the entered session
 ```
 
+## tmux
+```
+Cheatsheet: https://gist.github.com/MohamedAlaa/2961058
+tmux Plugin: https://github.com/tmux-plugins/tpm
+tmux-resurrect
+```
+
 ## LLVM_BUILTIN_DEBUGTRAP
 ```
   /// LLVM_BUILTIN_TRAP - On compilers which support it, expands to an expression
