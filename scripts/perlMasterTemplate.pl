@@ -12,6 +12,7 @@ use File::Path qw(make_path remove_tree);
 use Env;
 
 # Using comments
+
 =pod
 # Using some perl lib
 use lib qw( /home/sdasgup3/Github/binary-decompilation/test/utils/ );
@@ -143,3 +144,26 @@ my $someline = "";
 if ( $someline =~ m/$xpatterns[0]/ ) {
     print $1. "\n";
 }
+
+# Regex replace
+# r is non destructive modifier
+my $TMPL    = "aSUBSTc";
+my $MODTMPL = $TMPL =~ s/SUBST/REPLACE/gr;
+
+## Multiline strings without including the newlines and indents
+my $name    = 'Foo';
+my $message = <<"END_MSG";
+Hello $name,
+
+how are you?
+END_MSG
+
+# Lazy evaluation of variables
+my $msg  = "?";
+my $talk = "10 $msg 10 ";
+
+$msg = "==";
+print "$talk" . "\n";
+print "But we want\n";
+my $modtalk = $talk =~ s/\?/\=\=/gr;
+print $modtalk;
