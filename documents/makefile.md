@@ -117,7 +117,18 @@ is only the first rule is chosen. Another way to have all the recipes executed
 is to do `make X Y Z`
 
 ####.PHONY target
-- Avoid a conflict with a file of the same name
+
+- Idea: The following rule says that trigger the action if the 1. target does not exists (to be explained shortly) **OR** 2. any of the prerequisites have changed.
+
+	```
+		target: prerequisites
+
+					action
+	```
+	 - If target is just symbol, then the action will always be triggered as (1) is always false.
+	 - If the target is a file, and it exists then (2) has to be true for the action to be triggered.
+
+##### Avoid a conflict with a file of the same name
   With the following rules
   ```
   all : test.exe
@@ -126,9 +137,9 @@ is to do `make X Y Z`
     gcc test.c
   ```
 
-  Once `test.exe` is produced, the rule `test.exe` is not activated, because it
-  does not have any prerequisites that can change and trigger the rule in turn.
-  But with the following, the rule will be triggered every time.
+  Once `test.exe` is produced, the rule `test.exe` is not activated, because (2) is always be false as there is nothing to change.
+
+	But with the following, the rule will be triggered every time.
 
   ```
   .PHONY: test.exe
@@ -138,11 +149,9 @@ is to do `make X Y Z`
   ```
 
   This is useful in case of rules like `clean`, where we want the rule to get
-  activated at every invocation. But as it does not have any prerequisites and so
-  if there is a file named `clean` in directory, then the rule will not
-  activated.
+  activated at every invocation.
 
-- Improve performance
+##### Improve performance
   Often we need rules for recursive `make`s like
 
   ```
@@ -169,8 +178,7 @@ is to do `make X Y Z`
     ${TESTS}:
         make -C $@
   ```
-  Here `.PHONY:all` means whenever `make` is invoked execute the recipe which is "all the directories". But as all the directories are already there, so `nothing to make for all`
-  Also the rule for `${TESTS}` does not have any prerequisites, so it will never execute.
+  Here `.PHONY:all` means whenever `make` is invoked, execute the recipe which is "all the directories". But as all the directories are already there and the rule for `${TESTS}` does not have any prerequisites, so `nothing to make for all`
 
   So, to avoid all this and to avail the facility of `parallel make` do,
   ```
