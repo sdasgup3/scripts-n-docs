@@ -124,18 +124,21 @@ sub warnInfo {
     system("echo  \e[4m\e[1m\e[35m$args\e[0m");
 }
 
-# Passing ref to arrays
-my @arr1 = ();
-my @arr2 = ();
-compareStates( \@arr1, \@arr2 );
+# Passing references to arrays
+my $scalar = "";
+my @arr = ();
+my %hash = ();
+compareStates( \$scalar, \@arr, \%hash );
 
 sub compareStates {
-    my ( $k_ref, $x_ref ) = @_;
-    my @kstates = @{$k_ref};
-    my @xstates = @{$x_ref};
+    my ( $a_ref, $b_ref, $c_ref ) = @_;
+    my $A = ${$a_ref};
+    my @B = @{$b_ref};
+    my %C = %{$c_ref};
+
 
     # return value
-    return @xstates;
+    return @B;
 }
 
 # Regex match
