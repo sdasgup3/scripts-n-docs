@@ -8,7 +8,7 @@ set cindent
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-set ic
+set noic
 set complete+=kspell
 set spell spelllang=en_us
 se nospell

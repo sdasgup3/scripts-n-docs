@@ -10,9 +10,16 @@ use File::chdir;
 use Cwd;
 use File::Path qw(make_path remove_tree);
 use Env;
+use POSIX; # to use power
+use bigint; # to stop imprecesion
+use bigint qw/hex oct/;
+
+#changing default prefix
+# so that  we can use script.pl -foo -5
+#Getopt::Long::Configure('prefix=+');
+# new usage is script.pl +foo -5
 
 # Using comments
-
 =pod
 # Using some perl lib
 use lib qw( /home/sdasgup3/Github/binary-decompilation/test/utils/ );
@@ -29,9 +36,12 @@ $CWD = $current;
 # Using GetOPtions
 my $file = "";
 my $help = "";
+my @nums = ();
+
 GetOptions(
     "help"   => \$help,
     "file:s" => \$file,
+    "nums:s" => \@nums,
 ) or die("Error in command line arguments\n");
 
 # Equality / Unequality
@@ -63,7 +73,8 @@ if ( ( -e $file ) and ( -d $sdir ) ) {
 my %tool_path;
 $tool_path{'llvm'} = "$home";
 my $lenhash = scalar keys %tool_path;
-
+my @arr = ();
+my $lenarrr = scalar(@arr);
 # Concatenate Print
 print "\n" . $lenhash . "\n";
 
@@ -96,7 +107,24 @@ sub createDir {
     );
 }
 
+
 # Useful Subroutine
+
+sub split_filename {
+    my $arg = shift @_;
+    # split with // mean each character
+    my @components = split( /\//, ${arg} );
+    my $filename = $components[ @components - 1 ];
+
+    @components = split( /\./, ${filename} );
+    my @slice = @components[ 0 .. @components - 2 ];
+    my $file  = join ".", @slice;
+    my $ext   = $components[ @components - 1 ];
+
+    # print( "\n" . $filename . "%%" . $file . "%%" . $ext . "\n" );
+    return ( $file, $ext );
+}
+
 
 sub execute {
     my $args = shift @_;
