@@ -28,8 +28,11 @@ titles[7]="Remill"
 cmds[8]="cd ~/Github/binary-decompilation/test/decompilation/test_0/"
 titles[8]="llvm tests "
 
-cmds[9]="cd ~/Junk/Kdump"
-titles[9]="Junk Kdump Test"
+cmds[9]="cd /home/sdasgup3/Github/llvm-verified-backend"
+titles[9]="llvm semantics "
+
+cmds[10]="cd ~/Junk/Kdump"
+titles[10]="Junk Kdump Test"
 
 
 for i in 1 2 3 4 5 6 7 8 9; do

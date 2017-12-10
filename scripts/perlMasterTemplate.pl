@@ -198,3 +198,7 @@ print "$talk" . "\n";
 print "But we want\n";
 my $modtalk = $talk =~ s/\?/\=\=/gr;
 print $modtalk;
+
+# substring
+my $masterstr = "I have horse";
+print("\n". substr($masterstr, 7, 5));

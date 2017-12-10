@@ -1,5 +1,10 @@
 ## Git
 
+### Show cimmited files for a hash
+
+```
+git show --stat <commit-hash>
+```
 
 ### Switch branch without detaching head
 
