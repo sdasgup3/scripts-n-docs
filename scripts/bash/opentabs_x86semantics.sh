@@ -5,7 +5,7 @@ tab=" --tab"
 options=()  #(--tab --title=Terminal)
 
 cmds[1]="cd /home/sdasgup3/Github/binary-decompilation/x86-semantics"
-titles[1]="mine"
+titles[1]="build"
 
 cmds[2]="cd /home/sdasgup3/Github/binary-decompilation/x86-semantics/scripts/"
 titles[2]="script"
@@ -34,8 +34,10 @@ titles[9]="llvm semantics "
 cmds[10]="cd ~/Junk/Kdump"
 titles[10]="Junk Kdump Test"
 
+cmds[11]="cd ~/"
+titles[11]="K Debug"
 
-for i in 1 2 3 4 5 6 7 8 9; do
+for i in 1 2 3 4 5 6 7 8 9 10 11; do
   options+=($tab --title="${titles[i]}"  -e "bash -c \"${cmds[i]} ; bash\"" )          
 done
 

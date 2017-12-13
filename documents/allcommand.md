@@ -5,8 +5,29 @@
 tar -xvf ~/Downloads/ideaIC-2017.2.5.tar.gz
 cd idea-IC-172.4343.14/
 ./bin/idea.sh
+
+Application Cnfig VM options:
+-Xms64m
+-Xmx1024m
+-Xss32m
+-XX:+TieredCompilation
+-Djava.awt.headless=true
+-Djava.library.path="LD_LIBRARY_PATH:/home/sdasgup3/Github/k/k-distribution/target/release/k/lib/native/linux64/"
+-ea
+
+Program Arguments:
+-krun -v --debug  /home/sdasgup3/Github/learning-K/test.test15
+
+
+Env paths:
+PATH:  /home/sdasgup3/Github/k/k-distribution/target/release/k/lib/native/linux:/home/sdasgup3/Github/k/k-distribution/target/release/k/lib/native/linux64:/home/sdasgup3/ida-6.95/:/home/sdasgup3/Github/k/k-distribution/target/release/k//bin/:/home/sdasgup3/Install/oprofile.install//bin/:/home/sdasgup3/.local//bin:/home/sdasgup3/Install/llvm.release.install/bin:/home/sdasgup3/.nix-profile/bin:/home/sdasgup3/.nix-profile/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+LD_LIBRARY_PATH
+/home/sdasgup3/Github/k/k-distribution/target/release/k//lib/native/linux64/:/home/sdasgup3/Github/k/k-distribution/target/release/k//lib:/home/sdasgup3/Install/oprofile.install//lib/:/home/sdasgup3/.local//lib:/home/sdasgup3/Install/llvm.release.install/lib:/usr/local/lib/
+
 ```
 ./java-backend/src/main/java/org/kframework/backend/java/symbolic/SymbolicRewriter.java:85
+/home/sdasgup3/Github/k/shell/src/main/java/org/kframework/main/Main.java:235
 
 ## IDA
 ```
@@ -396,6 +417,22 @@ sudo apt-get install libgtk2.0-0:i386 libsm6:i386
 
 
 # Cheetsheet
+
+## K-Framework
+```
+mvn -e clean verify
+mvn package
+```
+
+## Atom Usage
+### Multiline selection
+  - Highlight multiple lines however you like.
+  - Use the Selection|Split Into Lines command (press Ctrl+Shift+P and type Split Selection Into Lines) to split the multiline selection into a selection for each line.
+  - Press the right arrow by itself to reveal the cursor at the end of the selections.
+
+### Toggle Uper/Lower
+ - Convert to Upper Case	⌘-k-u
+ - Convert to Lower Case	⌘-k-L
 
 ## Binary Analysis
 ```

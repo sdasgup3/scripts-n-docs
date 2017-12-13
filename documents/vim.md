@@ -1,3 +1,32 @@
+## Swap the verticle split
+`Cltr-w-r`
+
+## Incrementing Selected Numbers
+Input
+```
+text1text
+text1text
+```
+Output:
+```
+text1text
+text2text
+```
+
+ - With the cursor on the first 1 in the first line, start a blockwise select by pressing Ctrl-V .
+- Move the cursor down to select the first column of zeros, then press `g Ctrl-A`
+
+## Making or replacing a text  with list
+
+  - `:<LNE NUMBER>put =range(11,15)`
+  - `:put =map(range(1,150), 'printf(''%04d'', v:val)')`
+  - `:for i in range(1,10) | put ='192.168.0.'.i | endfor`
+
+ - Substitute with ascending numbers
+   - Suppose you want to replace each occurrence of "abc" with "xyz_N" where N is an ascending number (xyz_1, xyz_2,  xyz_3, and so on).
+
+   `:let i=1 | g/abc/s//\='xyz_'.i/ | let i=i+1`
+
 ## Record and Replay
 ```
 // record
@@ -53,15 +82,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 insert the code in .vimrc
 or add more plugins from https://vimawesome.com/
 Launch vim and run :source % and :PluginInstall
-
-
 ```
-### Hex editing
-```
-:%!xxd
-:%!xxd -r
 
-```
 
 ### Removing leading training whitespaces
 ```

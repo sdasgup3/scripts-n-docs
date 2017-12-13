@@ -1,6 +1,42 @@
 ## Git
 
-### Show cimmited files for a hash
+### Merging Vs Rebase
+
+- Merge Master changes to feature branch.
+  ```
+  git checkout feature
+  git merge master
+  or
+  git merge master feature
+  ```
+  Does a three way merge between feature, master and the common ancestor of both.
+
+  - Pros
+  - Cons
+    - __The feature branch will have an extraneous merge__ commit every time you need to incorporate upstream changes. If master is very active, this can pollute your feature branch’s history quite a bit.
+
+
+- Rebase feature branch onto master
+  ```
+  git checkout feature
+  git rebase master
+  ```
+  This moves the entire feature branch to begin on the tip of the master branch, effectively incorporating all of the new commits in master.
+
+  - Pros
+    - Cleaner project history.
+  - Cons
+      - Loses the context provided by a merge commit—you can’t see when upstream changes were incorporated into the feature.
+      - **Not** To be used on public branches.
+
+- Interactive rebase
+  ```
+  git checkout feature
+  git rebase -i master
+  ```
+  Then changing the pick command (to fixup )and/or re-ordering the entries.
+
+### Show commited files for a hash
 
 ```
 git show --stat <commit-hash>

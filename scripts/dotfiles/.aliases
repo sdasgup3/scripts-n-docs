@@ -15,3 +15,4 @@ alias gitc='/home/sdasgup3/Programming/Scripting/Bash/gitc.sh'
 alias julia='/home/sdasgup3/Install/julia/julia'
 alias cc='/usr/bin/gcc'
 alias infopl="/home/sdasgup3/Github/binary-decompilation/x86-semantics/scripts/infonum.pl"
+alias idea="/home/sdasgup3/Install/idea-IC-172.4343.14/bin/idea.sh"
