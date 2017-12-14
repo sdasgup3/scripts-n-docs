@@ -175,6 +175,9 @@ my $someline = "";
 if ( $someline =~ m/$xpatterns[0]/ ) {
     print $1. "\n";
 }
+if ( $someline !~ m/$xpatterns[0]/ ) {
+    print $1. "\n";
+}
 
 # Regex replace
 # r is non destructive modifier

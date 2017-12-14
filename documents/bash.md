@@ -10,6 +10,10 @@
   Command:
   echo "<A>...</A> <B>...</B>" | sed -e 's/\(<[^</]*>\)/\n\1/g'
   ```
+- Delete linesmatching a string
+  ```
+    sed -e '/string/d'
+  ```
 
 - Delete anything between lines matching two regexes
   ``` sed -e '/regex1/,/regex2/d' filename```
