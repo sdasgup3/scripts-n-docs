@@ -146,26 +146,26 @@ without changing anything else. Note that ```git reset <file>``` is short for
 ```git reset HEAD <file>```
 - You can use git reset without any file name to undo all due changes. This can come in handy when there are too many files to be listed one by one in a reasonable amount of time.
 
-####After commiting
+#### After commiting
 ```git reset (--hard) HEAD~1```
 
-###Undo git rm
+### Undo git rm
 #### Before commiting
 ```
 git reset
 git checkout -- $(git ls-files -d)
 ```
-####After commiting
+#### After commiting
 ```git reset (--hard) HEAD~1```
 
-###git mv (rename)
+### git mv (rename)
 ```
 git mv oldname newname
 git commit -m "message"
 git push
 ```
 
-###git diff “old mode 100755 new mode 100644”
+### git diff “old mode 100755 new mode 100644”
 - Default
 ```git config core.filemode false```
 - Only for this project edit .git/config
@@ -174,18 +174,18 @@ git push
 filemode = false
 ```
 
-###Undo the local delete or change
+### Undo the local delete or change
 
 ```git checkout -- <file>```
 
-###Stashing the changes
+### Stashing the changes
 ```
 git stash
 git stash list
 git stash apply
 ```
 
-###Git Ignore
+### Git Ignore
 - [source 1](https://help.github.com/articles/ignoring-files)
 - [source 2](http://git-scm.com/docs/gitignore)
 ```
@@ -194,7 +194,7 @@ add ignore rules
 check-in the file
 ```
 
-###Patching
+### Patching
 - Patch mode allows you to stage parts of a changed file, instead of the entire file. This allows you to make concise, well-crafted commits that make for an easier to read history.
 ```git add -p```
 - [source 1](http://johnkary.net/blog/git-add-p-the-most-powerful-git-feature-youre-not-using-yet/)
@@ -248,7 +248,7 @@ git remote add gitlab <url after creating a project>
 git push gitlab master
 ```
 
-###Generating ssh keys
+### Generating ssh keys
 - This is to generate ssh keys and adding them to got hub so as to get rid of https cloning errors.
 - [source 1](https://help.github.com/articles/generating-ssh-keys)
 - [source 2](https://help.github.com/articles/https-cloning-errors)

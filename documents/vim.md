@@ -1,3 +1,8 @@
+## Upper/Lower case
+```
+u and U for lower/upper case respectively.
+```
+
 ## Swap the verticle split
 `Cltr-w-r`
 
@@ -107,7 +112,7 @@ gg=G
 - Suppose we have `{\tt\emph{ABC}}, {\tt\emp{XYZ}}` and we want to get `{\tt
   ABC}, {\tt XYZ}`. For that, doing `%s/\\emph{\(.*\)}/ \1 /gc` will consider
   the longest match and select `\emph{ABC}}, {\tt\emp{XYZ}}`, but we want to
-  select just `\emph{ABC}`. For that instead of * use \{-} i.e
+  select just `\emph{ABC}`. For that instead of * use \\{-} i.e
 ```
 %s/\\emph{\(.\{-}\)}/ \1/gc
 ```

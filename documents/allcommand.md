@@ -1,5 +1,15 @@
 # Installations
 
+## Stoke/Strata
+```
+git clone git@gitlab.engr.illinois.edu:llvm/allvm-nixpkgs
+cd allvm-nixpkgs/allvm/
+nix-build -A projects.stoke
+//change pkgs/projects/stoke/default.nix
+nix-build -A projects.stoke
+nix-env -f ~/Github/allvm-nixpkgs/allvm/defautl.nix -iA projects.stoke
+```
+
 ## ItelliJ
 ```
 tar -xvf ~/Downloads/ideaIC-2017.2.5.tar.gz

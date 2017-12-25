@@ -73,10 +73,6 @@ if ( ( -e $file ) and ( -d $sdir ) ) {
 my %tool_path;
 $tool_path{'llvm'} = "$home";
 my $lenhash = scalar keys %tool_path;
-my @arr = ();
-my $lenarrr = scalar(@arr);
-# Concatenate Print
-print "\n" . $lenhash . "\n";
 
 # Keys of hash
 my @fruits = keys %tool_path;
@@ -85,6 +81,35 @@ for my $fruit (@fruits) {
 
 for my $fruit ( keys %tool_path ) {
 }
+
+# Hash of arrays
+my %hasharray= ();
+push @{$hasharray{'a'}}, 1;
+push @{$hasharray{'b'}}, 2;
+push @{$hasharray{'a'}}, 3;
+print @{$hasharray{'a'}};
+print "TEST". $hasharray{'a'}[1] ."\n";
+
+my %dramatis_personae = (
+    humans => [ 'hamnet', 'shakespeare', 'robyn', ],
+    faeries => [ 'oberon', 'titania', 'puck', ],
+    other => [ 'morpheus, lord of dreams' ],
+);
+
+foreach my $group (keys %dramatis_personae) {
+    print "The members of $group are\n";
+    foreach (@{$dramatis_personae{$group}}) {
+        print "\t$_\n";
+    }
+}
+
+
+# Array Length
+my @arr = ();
+my $lenarrr = scalar(@arr);
+# Concatenate Print
+print "\n" . $lenhash . "\n";
+
 
 # Array Usage
 my @maindirs = ( "llvm", );
@@ -154,9 +179,9 @@ sub warnInfo {
 
 # Passing references to arrays
 my $scalar = "";
-my @arr = ();
+my @myarr = ();
 my %hash = ();
-compareStates( \$scalar, \@arr, \%hash );
+compareStates( \$scalar, \@myarr, \%hash );
 
 sub compareStates {
     my ( $a_ref, $b_ref, $c_ref ) = @_;
@@ -204,4 +229,5 @@ print $modtalk;
 
 # substring
 my $masterstr = "I have horse";
-print("\n". substr($masterstr, 7, 5));
+print("\n". substr($masterstr, 7, 5)."\n");
+
