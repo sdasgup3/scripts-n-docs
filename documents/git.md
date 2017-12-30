@@ -21,7 +21,7 @@
   git checkout feature
   git rebase master
   ```
-  This moves the entire feature branch to begin on the tip of the master branch, effectively incorporating all of the new commits in master.
+  This moves the entire feature branch to begin on the tip of the master branch, effectively `incorporating all of the new commits in feature on tip of master.`
 
   - Pros
     - Cleaner project history.

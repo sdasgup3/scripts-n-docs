@@ -1,9 +1,27 @@
-### General tips
+
+
+## General tips
 - `ret=$(shell cmd)`: Execute any shell command.
 - `cat -e -t Makefile` shows the presence of tabs with ^I and line endings with $.
 - `PRECIOUS: %.o` : Prevents deletion of temporary files (as determined by Makefile system).
 - `make VERBOSE=1` or In cmake, set `CMAKE_VERBOSE_MAKEFILE to ON`.
-- By default, `parallel make` will stop if on `make` fails. Use `make -k` to override (k: continue).
+- By default, `parallel make` will stop if  `make` fails. Use `make -k` to override (k: continue).
+
+## Makefle receipe
+- Make tool starts a new shell process for each recipe line. And shell variables – even 'exported' environment variables – cannot possibly propagate upwards; they're gone as soon as the shell process exits.
+- In case we want something like
+	```
+	rule:
+		X=$$(echo $< | cut -d '.' -f 1 | tr A-Z a-z)
+		krun test.$${X} --debug
+	```
+	Either join the receipe lines using `\`
+	```
+	rule:
+		X=$$(echo $< | cut -d '.' -f 1 | tr A-Z a-z) ; \
+		krun test.$${X} --debug
+	```
+	Or use `.ONESHELL:`
 
 ## Parallel Invoke
 ### On Directories
@@ -65,7 +83,7 @@ cleanxstate:
 ```
 
 
-### Makefile variables
+## Makefile variables
 ```
 target: prerequisites
     action
@@ -74,7 +92,7 @@ $< == first membet of prerequisites
 $^ == all members of prerequisites
 ```
 
-### Substitution
+## Substitution
 ```
 SRCS=$(shell find .  -name "*.cpp" | sort -V)
 OBJS=$(patsubst %.cpp, %.o, $(SRCS))
@@ -95,7 +113,7 @@ test: $(OBJS)
 		$(CXX) $(CXXFLAGS) -I $(INCLUDES) $< -c -o $@
 ```
 
-### Inferring rules & recipe
+## Inferring rules & recipe
 
 - The following rule
   ```
@@ -190,14 +208,14 @@ is to do `make X Y Z`
     make -C $@
   ```
 
-###Debugging
+## Debugging
 
   ```
   $(warning dsand $(LCC))
   @echo $(LCC)
   ```
 
-###Canceling implicit rules
+## Canceling implicit rules
   You can override a built-in implicit rule (or one
     you have defined yourself) by defining a new pattern rule with the same
 target and prerequisites, but a different recipe. When the new rule is defined,

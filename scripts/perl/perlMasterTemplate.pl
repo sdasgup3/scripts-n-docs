@@ -10,8 +10,8 @@ use File::chdir;
 use Cwd;
 use File::Path qw(make_path remove_tree);
 use Env;
-use POSIX; # to use power
-use bigint; # to stop imprecesion
+use POSIX;     # to use power
+use bigint;    # to stop imprecesion
 use bigint qw/hex oct/;
 
 #changing default prefix
@@ -20,6 +20,7 @@ use bigint qw/hex oct/;
 # new usage is script.pl +foo -5
 
 # Using comments
+
 =pod
 # Using some perl lib
 use lib qw( /home/sdasgup3/Github/binary-decompilation/test/utils/ );
@@ -83,33 +84,32 @@ for my $fruit ( keys %tool_path ) {
 }
 
 # Hash of arrays
-my %hasharray= ();
-push @{$hasharray{'a'}}, 1;
-push @{$hasharray{'b'}}, 2;
-push @{$hasharray{'a'}}, 3;
-print @{$hasharray{'a'}};
-print "TEST". $hasharray{'a'}[1] ."\n";
+my %hasharray = ();
+push @{ $hasharray{'a'} }, 1;
+push @{ $hasharray{'b'} }, 2;
+push @{ $hasharray{'a'} }, 3;
+print @{ $hasharray{'a'} };
+print "TEST" . $hasharray{'a'}[1] . "\n";
 
 my %dramatis_personae = (
-    humans => [ 'hamnet', 'shakespeare', 'robyn', ],
-    faeries => [ 'oberon', 'titania', 'puck', ],
-    other => [ 'morpheus, lord of dreams' ],
+    humans  => [ 'hamnet', 'shakespeare', 'robyn', ],
+    faeries => [ 'oberon', 'titania',     'puck', ],
+    other   => ['morpheus, lord of dreams'],
 );
 
-foreach my $group (keys %dramatis_personae) {
+foreach my $group ( keys %dramatis_personae ) {
     print "The members of $group are\n";
-    foreach (@{$dramatis_personae{$group}}) {
+    foreach ( @{ $dramatis_personae{$group} } ) {
         print "\t$_\n";
     }
 }
 
-
 # Array Length
-my @arr = ();
+my @arr     = ();
 my $lenarrr = scalar(@arr);
+
 # Concatenate Print
 print "\n" . $lenhash . "\n";
-
 
 # Array Usage
 my @maindirs = ( "llvm", );
@@ -132,11 +132,11 @@ sub createDir {
     );
 }
 
-
 # Useful Subroutine
 
 sub split_filename {
     my $arg = shift @_;
+
     # split with // mean each character
     my @components = split( /\//, ${arg} );
     my $filename = $components[ @components - 1 ];
@@ -149,7 +149,6 @@ sub split_filename {
     # print( "\n" . $filename . "%%" . $file . "%%" . $ext . "\n" );
     return ( $file, $ext );
 }
-
 
 sub execute {
     my $args = shift @_;
@@ -179,8 +178,8 @@ sub warnInfo {
 
 # Passing references to arrays
 my $scalar = "";
-my @myarr = ();
-my %hash = ();
+my @myarr  = ();
+my %hash   = ();
 compareStates( \$scalar, \@myarr, \%hash );
 
 sub compareStates {
@@ -189,12 +188,12 @@ sub compareStates {
     my @B = @{$b_ref};
     my %C = %{$c_ref};
 
-
     # return value
     return @B;
 }
 
-# Regex match
+################## Regex match
+## note $string =~ m// matches a substring of string; no need to mtch the entire string
 my @xpatterns = ( qr/\$\d* = (\d+)/, qr/\$\d* = \[ ([CPAZSOIF ]*) \]/, );
 my $someline = "";
 if ( $someline =~ m/$xpatterns[0]/ ) {
@@ -202,6 +201,12 @@ if ( $someline =~ m/$xpatterns[0]/ ) {
 }
 if ( $someline !~ m/$xpatterns[0]/ ) {
     print $1. "\n";
+}
+
+### Either match
+my $x1 = "0x23";
+if ( $x1 =~ m/(0x[ABCDEFabcdfe\d]+|\d+)/ ) {
+    print "Either Match:" . $1 . "\n" if defined($1);    # body...
 }
 
 # Regex replace
@@ -229,5 +234,17 @@ print $modtalk;
 
 # substring
 my $masterstr = "I have horse";
-print("\n". substr($masterstr, 7, 5)."\n");
+print( "\n" . substr( $masterstr, 7, 5 ) . "\n" );
 
+# Find
+use File::Find;
+
+my $myydir = ".";
+find( \&print_name_if_dir, $myydir );
+
+sub print_name_if_dir {
+    my $file = $_;
+
+    print "\nFIND FILE\n";
+    print $file if -f $file and $file =~ m/pl/;
+}

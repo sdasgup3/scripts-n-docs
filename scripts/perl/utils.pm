@@ -5,6 +5,7 @@ use File::Basename;
 use strict;
 use File::Path qw(make_path remove_tree);
 use POSIX;
+use File::Find;
 
 use bigint;
 use bigint qw/hex oct/;
@@ -15,7 +16,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = 1.00;
 @ISA     = qw(Exporter);
 @EXPORT =
-  qw(createDir execute info passInfo failInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename);
+  qw(createDir execute info passInfo failInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim);
 @EXPORT_OK = qw();
 
 sub createDir {
@@ -430,7 +431,11 @@ sub split_filename {
         return ( "", "" );
     }
     my @components = split( /\//, ${arg} );
-    my $filename = $components[ @components - 1 ];
+    my $filename   = $components[ @components - 1 ];
+    my $dir        = join "/", @components[ 0 .. @components - 2 ];
+    if ( $dir ne "" ) {
+        $dir = $dir . "/";
+    }
 
     @components = split( /\./, ${filename} );
     my @slice = @components[ 0 .. @components - 2 ];
@@ -438,7 +443,14 @@ sub split_filename {
     my $ext   = $components[ @components - 1 ];
 
     # print( "\n" . $filename . "%%" . $file . "%%" . $ext . "\n" );
-    return ( $file, $ext );
+    return ( $dir, $file, $ext );
+}
+
+sub trim {
+  my $arg = shift @_;
+
+  $arg =~ s/^\s+|\s+$//g;
+  return $arg;
 }
 
 1;
