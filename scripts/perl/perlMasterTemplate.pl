@@ -23,7 +23,7 @@ use bigint qw/hex oct/;
 
 =pod
 # Using some perl lib
-use lib qw( /home/sdasgup3/Github/binary-decompilation/test/utils/ );
+use lib qw( /home/sdasgup3/scripts-n-docs/scripts/perl/ );
 use utils;
 =cut
 
@@ -82,6 +82,10 @@ for my $fruit (@fruits) {
 
 for my $fruit ( keys %tool_path ) {
 }
+
+# Hash key exists
+print "exists: \n"    if exists $tool_path{'llvm'};
+print "Not exists:\n" if !exists $tool_path{'gcc'};
 
 # Hash of arrays
 my %hasharray = ();
@@ -245,6 +249,21 @@ find( \&print_name_if_dir, $myydir );
 sub print_name_if_dir {
     my $file = $_;
 
-    print "\nFIND FILE\n";
+    #print "\nFIND FILE\n";
     print $file if -f $file and $file =~ m/pl/;
 }
+
+# String Quotation multiple lines
+my $quotedstring = qq(I am
+sandeep
+);
+
+print $quotedstring. "\n";
+
+
+## Greedy match
+my $m1 = "I2_32XINT_34XINT";
+$m1 =~ m/(.*?)_(.*)/;
+print $1. "##". $2;
+
+

@@ -16,8 +16,147 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = 1.00;
 @ISA     = qw(Exporter);
 @EXPORT =
-  qw(createDir execute info passInfo failInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim);
+  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads);
 @EXPORT_OK = qw();
+
+sub initThreads {
+    my $num_of_threads = shift @_;
+    my @initThreads;
+    for ( my $i = 1 ; $i <= $num_of_threads ; $i++ ) {
+        push( @initThreads, $i );
+    }
+    return @initThreads;
+}
+
+sub scalarToArray {
+    my $scalar = shift @_;
+    my $delim  = shift @_;
+
+    my @arr = split( "$delim", $scalar );
+    return \@arr;
+}
+
+sub compareMaps {
+    my $map1_ref = shift @_;
+    my $map2_ref = shift @_;
+    my $debug    = shift @_;
+    my $msg      = shift @_;
+
+    my %map1 = %{$map1_ref};
+    my %map2 = %{$map2_ref};
+
+    my ( $present1, $absent1 ) = belongsTo( $map1_ref, $map2_ref, $debug );
+    my ( $present2, $absent2 ) = belongsTo( $map2_ref, $map1_ref, $debug );
+
+    if ( $present1 != $present2 ) {
+        failInfo("compareMaps failed1");
+    }
+    if (   ( scalar( keys %{$map1_ref} ) != $absent1 + $present1 )
+        or ( scalar( keys %{$map2_ref} ) != $absent2 + $present1 ) )
+    {
+        failInfo("compareMaps failed2");
+    }
+
+    print "|"
+      . $msg . "|"
+      . scalar( keys %{$map1_ref} ) . "|"
+      . scalar( keys %{$map2_ref} ) . "|"
+      . $absent1 . "|"
+      . $absent2 . "|"
+      . $present1 . "|\n";
+
+    #print "Map1: " . scalar( keys %{$map1_ref} ) . "\n";
+    #print "Map2: " . scalar( keys %{$map2_ref} ) . "\n";
+    #print "Map1 - Map2: " . $absent1 . "\n";
+    #print "Map2 - Map1: " . $absent2 . "\n";
+    #print "Map2 & Map1: " . $present1 . "\n";
+}
+
+sub belongsTo3 {
+    my $map1_ref = shift @_;
+    my $map2_ref = shift @_;
+    my $map3_ref = shift @_;
+    my $debug    = shift @_;
+
+    my %map1 = %{$map1_ref};
+    my %map2 = %{$map2_ref};
+    my %map3 = %{$map3_ref};
+
+    my $supp   = 0;
+    my $unsupp = 0;
+    for my $key ( sort keys %map1 ) {
+        if ( exists $map2{$key} and exists $map3{$key} ) {
+            if ( defined($debug) and 1 == $debug ) {
+                print "SUPP:$key\n";
+            }
+            $supp++;
+        }
+        else {
+            if ( defined($debug) and 1 == $debug ) {
+                print "US:$key\n";
+            }
+            $unsupp++;
+        }
+    }
+
+    return ( $supp, $unsupp );
+}
+
+sub belongsTo {
+    my $map1_ref = shift @_;
+    my $map2_ref = shift @_;
+    my $debug    = shift @_;
+
+    my %map1 = %{$map1_ref};
+    my %map2 = %{$map2_ref};
+
+    my $supp   = 0;
+    my $unsupp = 0;
+    for my $key ( sort keys %map1 ) {
+        if ( exists $map2{$key} ) {
+            if ( defined($debug) and 1 == $debug ) {
+
+                #print "SUPP:$key\n";
+            }
+            $supp++;
+        }
+        else {
+            if ( defined($debug) and 1 == $debug ) {
+                print "US:$key\n";
+            }
+            $unsupp++;
+        }
+    }
+
+    if ( defined($debug) and 1 == $debug ) {
+        print "======\n";
+    }
+
+    return ( $supp, $unsupp );
+}
+
+sub arrayToMap {
+    my $array_ref = shift @_;
+    my $keydelim  = shift @_;
+
+    my @array = @{$array_ref};
+    my %map   = ();
+
+    for my $item (@array) {
+
+        chomp $item;
+        trim($item);
+
+        if ( $item eq "" ) {
+            next;
+        }
+        my @splt = split( "$keydelim", $item );
+
+        #print $splt[0] . " %% " . $splt[1];
+        $map{ trim( $splt[0] ) } = trim( $splt[1] );
+    }
+    return \%map;
+}
 
 sub createDir {
     my $args = shift @_;
@@ -30,9 +169,17 @@ sub createDir {
 }
 
 sub execute {
-    my $args = shift @_;
-    print "$args \n";
-    system("$args");
+    my $args     = shift @_;
+    my $show_cmd = shift @_;
+
+    if ( defined($show_cmd) ) {
+        print "$args \n";
+    }
+    if ( defined($show_cmd) and $show_cmd == 2 ) {
+    }
+    else {
+        system("$args");
+    }
 }
 
 sub info {
@@ -42,7 +189,7 @@ sub info {
 
 sub passInfo {
     my $args = shift @_;
-    system("echo  \e[4m\e[1m\e[92m$args\e[0m");
+    system("echo  Passed:\e[4m\e[1m\e[92m$args\e[0m");
 }
 
 sub failInfo {
@@ -55,9 +202,114 @@ sub warnInfo {
     system("echo Warn:  \e[4m\e[1m\e[35m$args\e[0m");
 }
 
+sub debugInfo {
+    my $args  = shift @_;
+    my $print = shift @_;
+    if ( defined($print) and 1 == $print ) {
+        print("echo Debug:  $args");
+    }
+}
+
 sub display {
     my $args = shift @_;
     print "\t$args \n";
+}
+
+sub max {
+    my $arg1 = shift @_;
+    my $arg2 = shift @_;
+    if ( $arg1 > $arg2 ) {
+        return $arg1;
+    }
+    return $arg2;
+}
+
+sub min {
+    my $arg1 = shift @_;
+    my $arg2 = shift @_;
+    if ( $arg1 < $arg2 ) {
+        return $arg1;
+    }
+    return $arg2;
+}
+
+sub myGrep {
+    my $pattern     = shift @_;
+    my $antipattern = shift @_;
+    my $filename    = shift @_;
+    open( my $fp, "<", "$filename" ) or die "Grep: Can't open::$filename:: $!";
+    my @lines = <$fp>;
+    close $fp;
+    my @returnInfo = ();
+
+    for my $line (@lines) {
+        if ( $line =~ m/$pattern/ ) {
+            if ( $line =~ m/$antipattern/ ) {
+
+            }
+            else {
+                #print $pattern. "::" . $antipattern . "::" . $line . "\n";
+                push @returnInfo, $line;
+            }
+        }
+    }
+
+    return \@returnInfo;
+}
+
+sub printMap {
+    my $hashmap_ref = shift @_;
+    my $msg         = shift @_;
+    my $debug       = shift @_;
+
+    if ( $debug == 0 ) {
+        return;
+    }
+    my %hashmap = %{$hashmap_ref};
+    print "$msg" . "\n";
+    for my $key ( sort keys %hashmap ) {
+        print "$key" . " -> " . $hashmap{$key} . "\n";
+    }
+
+    print "\n";
+}
+
+sub printMapArray {
+    my $hashmap_ref = shift @_;
+    my $msg         = shift @_;
+    my $debug       = shift @_;
+
+    if ( $debug == 0 ) {
+        return;
+    }
+    my %hashmap = %{$hashmap_ref};
+    print "$msg" . "\n";
+    for my $key ( sort keys %hashmap ) {
+        print "$key" . " -> " . "\n";
+        printArray( \@{ $hashmap{$key} }, "", $debug );
+    }
+
+    print "\n";
+}
+
+sub printArray {
+    my $arr_ref = shift @_;
+    my $msg     = shift @_;
+    my $debug   = shift @_;
+
+    if ( defined($debug) and $debug == 0 ) {
+        return;
+    }
+
+    my @arr = @{$arr_ref};
+    print "$msg" . "\n";
+    my $index = 0;
+    for my $elem (@arr) {
+        print $index. ":" . $elem . "\n";
+        $index++;
+    }
+
+    print "\n";
 }
 
 # Sign extend a hex value.
@@ -447,10 +699,22 @@ sub split_filename {
 }
 
 sub trim {
-  my $arg = shift @_;
+    my $arg   = shift @_;
+    my $extra = shift @_;
 
-  $arg =~ s/^\s+|\s+$//g;
-  return $arg;
+    $arg =~ s/^\s+|\s+$//g;
+
+    if ( defined($extra) ) {
+        $arg =~ s/$extra//g;
+    }
+    return $arg;
+}
+
+sub removequotes {
+    my $arg = shift @_;
+
+    $arg =~ s/"//g;
+    return $arg;
 }
 
 1;

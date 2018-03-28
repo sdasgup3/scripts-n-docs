@@ -1,3 +1,13 @@
+## Changing case with regular expressions (\U \L)
+For example, assume a line with the text "This is a test".
+```
+:s/\(test\)/\U\1 file/
+produces: This is a TEST FILE
+
+:s/\(test\)/\U\1\e file/
+produces: This is a TEST file
+```
+
 ## Upper/Lower case
 ```
 u and U for lower/upper case respectively.

@@ -8,10 +8,17 @@ nix-build -A projects.stoke
 //change pkgs/projects/stoke/default.nix
 nix-build -A projects.stoke
 nix-env -f ~/Github/allvm-nixpkgs/allvm/defautl.nix -iA projects.stoke
+
+nix-env -iA allvm.projects.strata-debug-haswell
+
+cd strata/stoke
+make debug
 ```
 
-## ItelliJ
+## ItelliJ (K framework setup)
 ```
+  export K_OPTS="-Xmx4g"
+
 tar -xvf ~/Downloads/ideaIC-2017.2.5.tar.gz
 cd idea-IC-172.4343.14/
 ./bin/idea.sh
@@ -35,9 +42,16 @@ PATH:  /home/sdasgup3/Github/k/k-distribution/target/release/k/lib/native/linux:
 LD_LIBRARY_PATH
 /home/sdasgup3/Github/k/k-distribution/target/release/k//lib/native/linux64/:/home/sdasgup3/Github/k/k-distribution/target/release/k//lib:/home/sdasgup3/Install/oprofile.install//lib/:/home/sdasgup3/.local//lib:/home/sdasgup3/Install/llvm.release.install/lib:/usr/local/lib/
 
+mvn package -DskipTests
+
+mvn -e clean verify
+mvn package
+```
+### Paths
 ```
 ./java-backend/src/main/java/org/kframework/backend/java/symbolic/SymbolicRewriter.java:85
 /home/sdasgup3/Github/k/shell/src/main/java/org/kframework/main/Main.java:235
+```
 
 ## IDA
 ```
@@ -45,7 +59,7 @@ sudo apt-get install libgtk2.0-0:i386 libsm6:i386
 
 ```
 
-## CVC4
+## cvc4
   ```
   ./autogen.sh
   ./contrib/get-antlr-3.4
@@ -428,11 +442,8 @@ sudo apt-get install libgtk2.0-0:i386 libsm6:i386
 
 # Cheetsheet
 
-## K-Framework
-```
-mvn -e clean verify
-mvn package
-```
+## Utils to Install
+  - ncdu
 
 ## Atom Usage
 ### Multiline selection
@@ -487,6 +498,14 @@ sudo dpkg -l | more
 Search available packages
 ```
 apt-cache search "abc"
+```
+
+### Ubuntu support
+ubuntu-support-status
+
+### Ubuntu repo
+```
+sudo nano /etc/apt/sources.list
 ```
 
 ### apt update-alternatives

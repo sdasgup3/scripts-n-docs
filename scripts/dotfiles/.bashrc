@@ -12,11 +12,16 @@ LLVM_TRUNCK_HOME=$HOME/Install/llvm.release.install
 LLVM_HOME=$LLVM_TRUNCK_HOME
 PIP_INSTALLS=${HOME}/.local/
 OPROFILE=${HOME}/Install/oprofile.install/
-K=${HOME}/Github/k/k-distribution/target/release/k/
+K_BIN=${HOME}/Github/k/k-distribution/target/release/k/bin:${HOME}/Github/k/k-distribution/target/release/k/lib/native/linux
+K_LIB=${HOME}/Github/k/k-distribution/target/release/k//lib/native/linux64/:${HOME}/Github/k/k-distribution/target/release/k//lib/
+#K_BIN=${HOME}/Github/rtv_k/k-distribution/target/release/k/bin:${HOME}/Github/rtv_k/k-distribution/target/release/k/lib/native/linux
+#K_LIB=${HOME}/Github/rtv_k/k-distribution/target/release/k//lib/native/linux64/:${HOME}/Github/rtv_k/k-distribution/target/release/k//lib/
 IDA=${HOME}/ida-6.95/
+STOKE_LIB=/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/system/build/gcc-4.9.4/debug/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/regex/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/filesystem/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/strata/stoke/src/ext/cvc4-1.4-build/lib/
 
-export PATH=${IDA}:${K}/bin/:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:${LLVM_HOME}/bin:$PATH
-export LD_LIBRARY_PATH=${K}/lib:${OPROFILE}/lib/:${PIP_INSTALLS}/lib:${LLVM_HOME}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
+
+export PATH=${IDA}:${K_BIN}:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:${LLVM_HOME}/bin:$PATH
+export LD_LIBRARY_PATH=${K_LIB}:${PIP_INSTALLS}/lib:${LLVM_HOME}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
 export R_LIBS=${HOME}/Install/R_LIBS/
 export MCSEMA_HOME=${HOME}/Github/mcsema_latest_master/
 export TRAILOFBITS_LIBRARIES=/home/sdasgup3/Github/cxx-common/libraries
@@ -38,6 +43,9 @@ PS1='___________________________________________________________________________
 export NIX_PATH=${NIX_PATH}:allvm=$HOME/.nix-defexpr/channels/allvm
 
 bind -f  ~/.inputrc
+
+# Stoke 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${STOKE_LIB}
 
 # Pretty Display
 export PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"

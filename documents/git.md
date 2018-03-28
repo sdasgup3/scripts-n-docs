@@ -1,18 +1,31 @@
 ## Git
 
+### Splitting a subfolder out into a new repository
+https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/
+
+### Configure meld as git diff
+```
+# Add the following to your .gitconfig file.
+[diff]
+    tool = meld or gvimdiff
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+
+```
+
 ### Merging Vs Rebase
 
-- Merge Master changes to feature branch.
-  ```
+- Merge Master changes to feature branch . ```
   git checkout feature
   git merge master
   or
   git merge master feature
-  ```
-  Does a three way merge between feature, master and the common ancestor of both.
+  ``` Does a three way merge between feature, master
+  and the common ancestor of both .
 
-  - Pros
-  - Cons
+  - Pros - Cons
     - __The feature branch will have an extraneous merge__ commit every time you need to incorporate upstream changes. If master is very active, this can pollute your feature branch’s history quite a bit.
 
 
@@ -35,6 +48,38 @@
   git rebase -i master
   ```
   Then changing the pick command (to fixup )and/or re-ordering the entries.
+
+- In case of conflict, git rebase will stop at the first problematic commit and leave conflict markers in the tree. You can use git diff to locate the markers (<<<<<<) and make edits to resolve the conflict. For each file you edit, you need to tell Git that the conflict has been resolved, typically this would be done with
+```
+           git add <filename>
+```
+- After resolving the conflict manually and updating the index with the desired resolution, you can continue the rebasing process with
+```
+           git rebase --continue
+```
+- Alternatively, you can undo the git rebase with
+```
+           git rebase --abort
+```
+
+### Why `git push` throws error after rebase
+
+The problem is that git push assumes that remote branch can be fast-forwarded to your local branch, that is,  all the difference between local and remote branches is in local only :
+```
+Z--X--R         <- origin/some-branch (can be fast-forwarded to Y commit)
+       \
+        T--Y    <- some-branch
+```
+When you perform git rebase commits D and E are applied to new base and new commits are created. That means after rebase you have something like that:
+```
+A--B--C------F--G--D'--E'   <- feature-branch
+       \
+        D--E                <- origin/feature-branch
+```
+In that situation remote branch cannot  be fast-forwarded to local. Though, theoretically local branch can be merged into remote , but as git push performs only fast-forward merges it throws and error.
+
+And what --force option does is just ignoring state of remote branch and setting it to the commit you are pushing into it. So `git push --force origin feature-branch` simply overrides origin/feature-branch with local feature-branch.
+
 
 ### Show commited files for a hash
 
@@ -156,9 +201,12 @@ git reset
 git checkout -- $(git ls-files -d)
 ```
 #### After commiting
-```git reset (--hard) HEAD~1```
+```
+git reset (--hard) HEAD~1
+```
 
 ### git mv (rename)
+
 ```
 git mv oldname newname
 git commit -m "message"
@@ -186,12 +234,20 @@ git stash apply
 ```
 
 ### Git Ignore
+
 - [source 1](https://help.github.com/articles/ignoring-files)
 - [source 2](http://git-scm.com/docs/gitignore)
+
 ```
 touch .gitignore
 add ignore rules
 check-in the file
+```
+
+#### Negate rule of parent directory
+```
+Say parent gitignore has a rule r
+Use !r in subdir gitignore to bypass this.
 ```
 
 ### Patching
