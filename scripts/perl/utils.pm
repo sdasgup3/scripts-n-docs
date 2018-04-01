@@ -16,8 +16,17 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = 1.00;
 @ISA     = qw(Exporter);
 @EXPORT =
-  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads);
+  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads numlines);
 @EXPORT_OK = qw();
+
+sub numlines {
+    my $file = shift @_;
+
+    open( my $fp, "<", "$file" ) or die "Grep: Can't open::$file:: $!";
+    my @lines = <$fp>;
+    close $fp;
+    return scalar(@lines);
+}
 
 sub initThreads {
     my $num_of_threads = shift @_;
@@ -237,6 +246,11 @@ sub myGrep {
     my $pattern     = shift @_;
     my $antipattern = shift @_;
     my $filename    = shift @_;
+    my $debug       = shift @_;
+
+    if ( defined($debug) ) {
+        print "$filename" . " " . $pattern . "\n";
+    }
     open( my $fp, "<", "$filename" ) or die "Grep: Can't open::$filename:: $!";
     my @lines = <$fp>;
     close $fp;
