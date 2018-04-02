@@ -1,0 +1,72 @@
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+if [ -f ~/.aliases ]; then
+  . ~/.aliases
+fi
+
+export SVN_EDITOR=vim
+LLVM_TRUNCK_HOME=$HOME/Install/llvm.release.install
+LLVM_HOME=$LLVM_TRUNCK_HOME
+PIP_INSTALLS=${HOME}/.local/
+OPROFILE=${HOME}/Install/oprofile.install/
+K_BIN=${HOME}/Github/k/k-distribution/target/release/k/bin:${HOME}/Github/k/k-distribution/target/release/k/lib/native/linux
+K_LIB=${HOME}/Github/k/k-distribution/target/release/k//lib/native/linux64/:${HOME}/Github/k/k-distribution/target/release/k//lib/
+#K_BIN=${HOME}/Github/rtv_k/k-distribution/target/release/k/bin:${HOME}/Github/rtv_k/k-distribution/target/release/k/lib/native/linux
+#K_LIB=${HOME}/Github/rtv_k/k-distribution/target/release/k//lib/native/linux64/:${HOME}/Github/rtv_k/k-distribution/target/release/k//lib/
+IDA=${HOME}/ida-6.95/
+
+SYS_THRD_MULTI=/home/sdasgup3/Install/boost_1_66_0.centos.install/bin.v2/libs/system/build/gcc-gnu-4.9.0/release/threadapi-pthread/threading-multi/
+REG_THRD_MULTI=/home/sdasgup3/Install/boost_1_66_0.centos.install/bin.v2/libs/regex/build/gcc-gnu-4.9.0/release/threadapi-pthread/threading-multi/
+FS_THRD_MULTI=/home/sdasgup3/Install/boost_1_66_0.centos.install/bin.v2/libs/filesystem/build/gcc-gnu-4.9.0/release/threadapi-pthread/threading-multi/
+BASE_THRD_MULTI=/home/sdasgup3/Install/boost_1_66_0.centos.install/stage/lib/
+
+STOKE_LIB=${BASE_THRD_MULTI}:${SYS_THRD_MULTI}:${REG_THRD_MULTI}:${FS_THRD_MULTI}:/home/sdasgup3/Github/strata/stoke/src/ext/cvc4-1.4-build/lib/:/home/sdasgup3/Github/strata/stoke/src/ext/z3/build/
+CLN_LIB=/home/sdasgup3/Install/cln.install/lib/
+GCC49_LIB=/home/sdasgup3/Install/gcc-4.9.0.install/lib64/:/home/sdasgup3/Install/gcc-4.9.0.install/lib/
+GCC49_BIN=/home/sdasgup3/Install/gcc-4.9.0.install/bin/
+
+
+export PATH=${IDA}:${K_BIN}:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:${LLVM_HOME}/bin:$PATH
+export LD_LIBRARY_PATH=${K_LIB}:${PIP_INSTALLS}/lib:${LLVM_HOME}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
+export R_LIBS=${HOME}/Install/R_LIBS/
+export MCSEMA_HOME=${HOME}/Github/mcsema_latest_master/
+export TRAILOFBITS_LIBRARIES=/home/sdasgup3/Github/cxx-common/libraries
+
+
+# Git commands
+git config --global user.name "Sandeep Dasgupta"
+git config --global user.email "sdasgup3@illinois.edu"
+
+# prompt
+set-title(){
+# ORIG=$PS1
+  TITLE="\e]2;$@\a"
+#PS1=${ORIG}${TITLE}
+}
+PS1='_____________________________________________________________________________________________________________________________________\n\W| '
+
+# Nix
+#export NIX_PATH=${NIX_PATH}:allvm=$HOME/.nix-defexpr/channels/allvm
+
+#bind -f  ~/.inputrc
+
+# Stoke 
+export LD_LIBRARY_PATH=${GCC49_LIB}:${CLN_LIB}:${STOKE_LIB}:$LD_LIBRARY_PATH
+export PATH=${GCC49_BIN}:$PATH
+
+# Pretty Display
+export PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
+export LD_LIBRARY_PATH="$(echo $LD_LIBRARY_PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
+
+#whoami| figlet
+#ssh-add ~/.ssh/githubkey_rsa
+#ssh-add ~/.ssh/gitlab.key_rsa
+#echo "=================================================="
+#echo $PATH
+#echo "=================================================="
+#echo $LD_LIBRARY_PATH
+#echo "=================================================="
+#whoami| figlet
