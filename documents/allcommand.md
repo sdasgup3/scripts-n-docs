@@ -11,7 +11,7 @@ git pull upstream master
 git push origin master
 git checkout working
 git rebase master
-git push origin master -f
+git push origin working -f
 mvn package
 ```
 
@@ -36,20 +36,7 @@ make -j 8 debug
 
 ```
 
-### Deprecated
-```
-git clone git@gitlab.engr.illinois.edu:llvm/allvm-nixpkgs
-cd allvm-nixpkgs/allvm/
-nix-build -A projects.stoke
-//change pkgs/projects/stoke/default.nix
-nix-build -A projects.stoke
-nix-env -f ~/Github/allvm-nixpkgs/allvm/defautl.nix -iA projects.stoke
 
-nix-env -iA allvm.projects.strata-debug-haswell
-
-cd strata/stoke
-make debug
-```
 
 ## ItelliJ (K framework setup)
 ```
@@ -324,6 +311,22 @@ sudo apt-get install libgtk2.0-0:i386 libsm6:i386
     LLVM_COMPILER=clang CC=wllvm CXX=wllvm++ make
 
     ```
+
+### Deprecated
+    ```
+    git clone git@gitlab.engr.illinois.edu:llvm/allvm-nixpkgs
+    cd allvm-nixpkgs/allvm/
+    nix-build -A projects.stoke
+    //change pkgs/projects/stoke/default.nix
+    nix-build -A projects.stoke
+    nix-env -f ~/Github/allvm-nixpkgs/allvm/defautl.nix -iA projects.stoke
+
+    nix-env -iA allvm.projects.strata-debug-haswell
+
+    cd strata/stoke
+    make debug
+    ```
+
 ## allvm
   - build
     ```

@@ -1,3 +1,6 @@
+# Articles
+ - [Google Style Guide](https://google.github.io/styleguide/shell.xml)
+
 # Syntax
 
 ## `sed` experience
