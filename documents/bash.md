@@ -18,7 +18,12 @@
 - Delete anything between lines matching two regexes
   ``` sed -e '/regex1/,/regex2/d' filename```
 
-- ``` diff <(sed -e '/regex1/,/regex2/d' filename ) <(sed -e '/regex1/,/regex2/d' filename) ```
+- diff
+  ```
+  diff <(sed -e '/regex1/,/regex2/d' filename ) <(sed -e '/regex1/,/regex2/d' filename)
+
+  diff  -I "sigsegv\|Value\|was read at" <(sed -e 's/TMP_BV_[0-9]*_[0-9]*/TEMP_BV/g' -e 's/TMP_BOOL_[0-9]*/TMP_BOOL/g' file1) <(sed -e 's/TMP_BV_[0-9]*_[0-9]*/TEMP_BV/g'  -e 's/TMP_BOOL_[0-9]*/TMP_BOOL/g' file2)
+  ```
 - renaming extensions
     - ```for file in `ls *.dot`; do head=$(echo $file | sed -e 's/\(.*\)\.dot$/\1/g') ; mv $file  $head.gold;  done```
 - Copying one level up

@@ -1,5 +1,51 @@
 ## Git
 
+### Making a local folder a git repo
+```
+cd localFolder
+git .init
+git remote add origin <url>
+git add .
+git commit -m "init"
+git push -u origin master
+```
+
+### Commit portion of changes
+```
+git add --patch <filename> (or -p for short)
+
+Stage this hunk [y,n,q,a,d,/,j,J,g,s,e,?]?
+Here is a description of each option:
+
+y stage this hunk for the next commit
+n do not stage this hunk for the next commit
+q quit; do not stage this hunk or any of the remaining hunks
+a stage this hunk and all later hunks in the file
+d do not stage this hunk or any of the later hunks in the file
+g select a hunk to go to
+/ search for a hunk matching the given regex
+j leave this hunk undecided, see next undecided hunk
+J leave this hunk undecided, see next hunk
+k leave this hunk undecided, see previous undecided hunk
+K leave this hunk undecided, see previous hunk
+s split the current hunk into smaller hunks
+e manually edit the current hunk
+? print hunk help
+If the file is not in the repository yet, you can first do git add -N <filename>. Afterwards you can go on with git add -p <filename>.
+
+Afterwards, you can use:
+git diff --staged to check that you staged correct changes
+git reset -p to unstage mistakenly added hunks
+git commit -v to view your commit while you edit the commit message.
+```
+[Source](https://stackoverflow.com/questions/1085162/commit-only-part-of-a-file-in-git?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+
+
+###  Large files detected: Error
+```
+git filter-branch -f --index-filter 'git rm -r -f --ignore-unmatch <FILE_TO_REMOVE>' HEAD
+```
+
 ### Splitting a subfolder out into a new repository
 https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/
 
@@ -14,6 +60,7 @@ https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository
     cmd = meld "$LOCAL" "$REMOTE"
 
 ```
+
 
 ### Merging Vs Rebase
 
@@ -126,6 +173,14 @@ git merge upstream/master
 cd module
 git submodule add https://github.com/<user>/submodule submodule
 git pull origin master // update the submodule to the tip of the main module.
+git add/commit/push
+
+// Update
+cd submodule_name
+git checkout master && git pull
+cd ..
+git add submodule_name
+git commit -m "updating submodule to latest"
 
 // First time
 git submodule update --init --recursive
@@ -138,6 +193,18 @@ git rm -f submodule
 git commit -m ""
 git push
 ```
+
+#### Update a submodule to the latest commit
+
+```
+cd projB/projA
+git pull origin master
+cd ..
+git status
+git add projB/projA
+git commit -m "projA submodule updated"
+```
+
 
 ### Keys
   ```
@@ -174,13 +241,20 @@ git checkout branch_name   // checking out a branch
 git branch -m <oldname> <newname>
 ```
 
-#### Delete a branch
+#### Rename a branch locally and remotely
+```
+git branch -m old_branch new_branch         # Rename branch locally
+git push origin :old_branch                 # Delete the old branch
+git push --set-upstream origin new_branch   # Push the new branch, set local branch to track the new remote
+```
+
+#### Delete a branch locally and remotely
 ```
 git push origin --delete branch_name
 git branch -d <name>
 ```
 
-#### Deleting Master Branch
+#### Delete master branch
 [link](http://matthew-brett.github.io/pydagogue/gh_delete_master.html)
 
 ### Undo git add
@@ -264,7 +338,7 @@ git apply --stat  file.patch
 git apply file.patch
 ```
 
-###Git diff directed to gvimdiff
+### Git diff directed to gvimdiff
 ```
 git config --global diff.tool gvimdiff
 git config --global difftool.prompt false
@@ -273,7 +347,7 @@ git config --global alias.d difftool
 - Typing git d yields the expected behavior, type :wq in vim cycles to the next file in the change-set.
 
 
-###Adding a project to github
+### Adding a project to github
 - Create a new repo in github without gitignore or readme.
 - Change the current working directory to your local project.
 ```
@@ -285,7 +359,7 @@ git remote add origin <URL>
 git remote -v
 git push origin master
 ```
-###Working with others repositories in Github
+### Working with others repositories in Github
 - In github, fork the project.
 ```
 git clone git@github.com:sdasgup3/mcsema.git

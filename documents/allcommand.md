@@ -1,6 +1,42 @@
+# Workflows
+## Targetting ISA
+```
+-march=haswell
+```
+
+## k5 update
+```
+git checkout master
+git pull upstream master
+git push origin master
+git checkout working
+git rebase master
+git push origin master -f
+mvn package
+```
+
 # Installations
 
 ## Stoke/Strata
+
+### Stoke
+```
+./configure.sh
+cd src/ext/x64asm/src
+  sudo update-alternatives --config gcc
+select gcc 6
+ghc ./Codegen.hs
+./Codegen
+sudo update-alternatives --config gcc
+select gcc 4.9
+cd ..
+make debug
+cd ../../../
+make -j 8 debug
+
+```
+
+### Deprecated
 ```
 git clone git@gitlab.engr.illinois.edu:llvm/allvm-nixpkgs
 cd allvm-nixpkgs/allvm/
@@ -941,9 +977,26 @@ import pdb; pdb.set_trace()
 ```
 screen -ls
 screen -r <>
+screen -rd // attach to a already attached screen
 screen // create new
+screen -S name
+
+```
+
+### Inside screen
+```
+Cntrl-a c // new window
+
+Cntrl-a Esc // Enable scrolling
+Esc // To disable scrolling
+
+Cntrl-a Shift-a // Rename window name
+Cntrl-a :sessionname newname // Rename sesion
+
 Cntrl-a d // detach
 Cntrl-a :quit //kill the entered session
+
+Cntrl-a a // go to the begging of a line
 ```
 
 ## tmux

@@ -16,8 +16,24 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = 1.00;
 @ISA     = qw(Exporter);
 @EXPORT =
-  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads numlines);
+  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads numlines arrayAllSame);
 @EXPORT_OK = qw();
+
+sub arrayAllSame {
+    my $arr_ref = shift @_;
+    my @arr     = @{$arr_ref};
+
+    if ( scalar(@arr) <= 1 ) {
+        return 1;
+    }
+    my $elem = $arr[0];
+    for my $other (@arr) {
+        if ( $elem != $other ) {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 sub numlines {
     my $file = shift @_;
@@ -276,7 +292,7 @@ sub printMap {
     my $msg         = shift @_;
     my $debug       = shift @_;
 
-    if ( $debug == 0 ) {
+    if ( defined($debug) and $debug == 0 ) {
         return;
     }
     my %hashmap = %{$hashmap_ref};
@@ -291,16 +307,18 @@ sub printMap {
 sub printMapArray {
     my $hashmap_ref = shift @_;
     my $msg         = shift @_;
+    my $keysOnly    = shift @_;
     my $debug       = shift @_;
 
-    if ( $debug == 0 ) {
-        return;
-    }
     my %hashmap = %{$hashmap_ref};
     print "$msg" . "\n";
     for my $key ( sort keys %hashmap ) {
         print "$key" . " -> " . "\n";
-        printArray( \@{ $hashmap{$key} }, "", $debug );
+        if ( defined($keysOnly) and 1 == $keysOnly ) {
+        }
+        else {
+            printArray( \@{ $hashmap{$key} }, "", $debug );
+        }
     }
 
     print "\n";
@@ -319,7 +337,7 @@ sub printArray {
     print "$msg" . "\n";
     my $index = 0;
     for my $elem (@arr) {
-        print $index. ":" . $elem . "\n";
+        print "\t" . $index . ":" . $elem . "\n";
         $index++;
     }
 
@@ -691,7 +709,8 @@ sub printwithspaces {
 }
 
 sub split_filename {
-    my $arg = shift @_;
+    my $arg   = shift @_;
+    my $debug = shift @_;
 
     if ( "" eq $arg ) {
         return ( "", "" );
@@ -708,7 +727,10 @@ sub split_filename {
     my $file  = join ".", @slice;
     my $ext   = $components[ @components - 1 ];
 
-    # print( "\n" . $filename . "%%" . $file . "%%" . $ext . "\n" );
+    if ( defined($debug) and 1 == $debug ) {
+        print(
+            "\n%Dir%" . $dir . "\n%File%" . $file . "\n%Ext%" . $ext . "\n" );
+    }
     return ( $dir, $file, $ext );
 }
 

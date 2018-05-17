@@ -1,3 +1,21 @@
+## Set working diectory to current file
+```
+To change to the directory of the currently open file (this sets the current directory for all windows in Vim):
+
+:cd %:p:h
+
+You can also change the directory only for the current window (each window has a local current directory that can be different from Vim's global current directory):
+
+:lcd %:p:h
+
+In these commands, % gives the name of the current file, %:p gives its full path, and %:p:h gives its directory (the "head" of the full path).
+
+Automatically change the current directory as sometimes it is helpful if your working directory is always the same as the file you are editing. To achieve this, put the following in your vimrc:
+
+set autochdir
+```
+
+
 ## Changing case with regular expressions (\U \L)
 For example, assume a line with the text "This is a test".
 ```

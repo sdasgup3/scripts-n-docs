@@ -13,6 +13,7 @@ use Env;
 use POSIX;     # to use power
 use bigint;    # to stop imprecesion
 use bigint qw/hex oct/;
+use File::Temp qw/ :mktemp  /;
 
 #changing default prefix
 # so that  we can use script.pl -foo -5
@@ -264,6 +265,10 @@ print $quotedstring. "\n";
 ## Greedy match
 my $m1 = "I2_32XINT_34XINT";
 $m1 =~ m/(.*?)_(.*)/;
-print $1. "##". $2;
+print $1. "##". $2."\n";
 
-
+use File::Temp qw/ tempfile tempdir /;
+#$fh = tempfile();
+#($fh, $filename) = tempfile();
+my ($fh, $filename) = tempfile( "tmpfileXXXXX", DIR => "/tmp/");
+print "Temfile: " . $fh." ". $filename."\n";
