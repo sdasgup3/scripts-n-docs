@@ -18,12 +18,16 @@ use utils;
 my $file = "";
 my $patt = "";
 my $antipatt = "";
-my @show = ();
+my $show = "";
+my $count = "";
+my @buffer = ();
 
 GetOptions(
     "file:s" => \$file,
     "patt:s" => \$patt,
-    "antipatt:s" => \$antipatt,
+    "show" => \$show,
+    "count" => \$count,
+    "antipatt:s" => \$antipatt
 ) or die("Error in command line arguments\n");
 
 open( my $fp, "<", $file) or die "cannot open: $file: $!";
@@ -47,12 +51,24 @@ if("" eq $antipatt) {
 #print "Pattern:$patt\n";
 #print "AntiPattern:$antipatt\n";
 
-
+my $lno = 0;
 for my $line (@lines) {
     chomp $line;
 
+    my $prevline = $line;
+
     if($line =~ m/$patt/g) {
       $include_file = 1;
+      if("" ne $show) {
+        push @buffer, $line;
+      }
+
+      $line = $prevline;
+      if("" ne $count) {
+        my @matches = $line =~ /$patt/g;
+        print $line. ":". scalar(@matches). "\n";
+      }
+
     }
     if($line =~ m/$antipatt/g) {
       $include_file = 0;
@@ -60,5 +76,9 @@ for my $line (@lines) {
 }
 
 print $file."\n" if 1 == $include_file;
+
+if($include_file and $show) {
+  printArray(\@buffer, "");
+}
 
 

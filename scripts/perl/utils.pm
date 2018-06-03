@@ -6,6 +6,7 @@ use strict;
 use File::Path qw(make_path remove_tree);
 use POSIX;
 use File::Find;
+use Term::ANSIColor;
 
 use bigint;
 use bigint qw/hex oct/;
@@ -16,8 +17,56 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = 1.00;
 @ISA     = qw(Exporter);
 @EXPORT =
-  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads numlines arrayAllSame);
+  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads numlines arrayAllSame diffStrings);
 @EXPORT_OK = qw();
+
+our $home = $ENV{'HOME'};
+
+sub printStringDiff {
+    my ( $s1, $s2 , $message) = @_;
+
+    if ( $s1 eq $s2 ) {
+        return;
+    }
+    print "\n\n$message\n";
+    my @s1 = split( //, $s1 );
+    my @s2 = split( //, $s2 );
+    while (@s1) {
+
+        if ( defined $s1[0] and defined $s2[0] ) {
+            if ( $s1[0] eq $s2[0] ) {
+                print shift @s1;
+            }
+            else {
+                print color("red"), shift @s1, color("reset");
+            }
+        }
+        elsif ( defined $s1[0] ) {
+            print color("red"), shift @s1, color("reset");
+        }
+        shift @s2;
+    }
+    print "\n";
+
+    @s1 = split( //, $s1 );
+    @s2 = split( //, $s2 );
+    while (@s2) {
+
+        if ( defined $s2[0] and defined $s1[0] ) {
+            if ( $s2[0] eq $s1[0] ) {
+                print shift @s2;
+            }
+            else {
+                print color("red"), shift @s2, color("reset");
+            }
+        }
+        elsif ( defined $s2[0] ) {
+            print color("red"), shift @s2, color("reset");
+        }
+        shift @s1;
+    }
+    print "\n";
+}
 
 sub arrayAllSame {
     my $arr_ref = shift @_;
