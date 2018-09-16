@@ -1,4 +1,18 @@
 # Workflows
+
+## Working with Binaries
+```
+readelf --symbols ./a.out  | grep _start
+readelf --sections ./a.out   | grep ".text"
+objdump -f ./a.out
+objdump --dwarf=info test5.o
+objdump --dwarf=loc tracedprog2
+
+gcc sym2addr-dwarf.c -ldwarf -I/usr/local/google/home/sdasgup/Install/libdwarf-20181024/libdwarf/ -lelf
+info address symbol
+```
+
+
 ## Targetting ISA
 ```
 -march=haswell
@@ -378,6 +392,17 @@ sudo apt-get install libgtk2.0-0:i386 libsm6:i386
   cmake -G "Unix Makefiles" -DPYTHON_EXECUTABLE:FILEPATH=/home/sdasgup3/Install/Python-2.7.install/bin/python   -DPYTHON_LIBRARIES=/home/sdasgup3/Install/Python-2.7.install/lib/libpython2.7.so -DPYTHON_LIBRARY:FILEPATH=/home/sdasgup3/Install/Python-2.7.install/lib/libpython2.7.so   -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX=${HOME}/Install/llvm.install -DLLVM_TARGETS_TO_BUILD="host"  ../..
   make -j 8
   ```
+## Attempt 2
+```
+http://lldb.llvm.org/build.html
+llvm/build/Debug$ cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++  -DCMAKE_INSTALL_PREFIX=~/Install/llvm.debug.install/ -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="Debug" -DLLVM_TARGETS_TO_BUILD="host"  -DLLDB_EXPORT_ALL_SYMBOLS=1  ../..
+make
+// If complaints on swig latest
+http://www.swig.org/download.html
+which in turn need
+https://stackoverflow.com/questions/2263404/what-package-i-should-install-for-pcre-devel
+````
+
 
 ## Python
 ### build

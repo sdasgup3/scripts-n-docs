@@ -1,5 +1,66 @@
 ## Git
 
+## Commit without a new log
+```
+git add toplev.h toplev.c ; git commit --amend --no-edit
+```
+
+## Chnage latest commit
+```
+git commit --amend
+```
+
+## Chnage previous commit
+```
+git rebase -i
+change pick to reword
+```
+
+## Commit a change to previous reveion
+```
+git add file
+git commit -m "ABout to merge"
+git rebase -i
+
+pick R1
+pick R2
+pick ABout to merg
+
+Say we want to squash "About to merge" with R1
+
+then change it to
+
+pick R1
+s ABout to merg
+pick R2
+
+s squashes with previous commit
+```
+
+## Change author of previous commit
+```
+git rebase -i
+pick R1
+pick R2
+
+Say we want to edit the author of R1
+
+then change it to
+
+edit R1
+pick R2
+
+git commit --amend --author="Author Name <email@address.com>"
+git rebase --continue
+```
+
+
+## Sqash consequitive commits (i.e merge them)
+```
+git -i rebase HEAD~n
+choose sqaush
+```
+
 ### Making a local folder a git repo
 ```
 cd localFolder
