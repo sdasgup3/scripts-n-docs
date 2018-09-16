@@ -1,3 +1,9 @@
+## Join n consecutive lines
+```
+:g/^/,+n join
+https://groups.google.com/forum/#!topic/comp.editors/FeZGnZMVjSc
+```
+
 ## Set working diectory to current file
 ```
 To change to the directory of the currently open file (this sets the current directory for all windows in Vim):
