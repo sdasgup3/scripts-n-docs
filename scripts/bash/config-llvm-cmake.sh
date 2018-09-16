@@ -2,14 +2,15 @@
 
 # location where clang should be installed
 #INSTALL_PREFIX=$HOME/Install/llvm-trunk-with-gcc-install
-INSTALL_PREFIX=$HOME/Install/llvm-3.4.2.install
-SRC_DIR=$HOME/Install/llvm-3.4.2.src
+INSTALL_PREFIX=$HOME/Install/llvm-3.5.install
+SRC_DIR=$HOME/Install/llvm-3.5
 
 # location of gcc used to build clang
-HOST_GCC=/software/gcc-4.8.2/
+#HOST_GCC=/software/gcc-4.8.2/
+HOST_GCC=/usr/bin/gcc
 
 # number of cores
-CPUS=16
+CPUS=8
 # uncomment following to get verbose output from make
 #VERBOSE=VERBOSE=1
 # uncomment following if you need to sudo in order to do the install

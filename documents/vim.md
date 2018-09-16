@@ -21,6 +21,12 @@ Automatically change the current directory as sometimes it is helpful if your wo
 set autochdir
 ```
 
+## 80 char warning
+```
+set colorcolumn=80
+
+```
+
 
 ## Changing case with regular expressions (\U \L)
 For example, assume a line with the text "This is a test".

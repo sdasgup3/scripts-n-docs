@@ -13,6 +13,7 @@ set complete+=kspell
 set spell spelllang=en_us
 se nospell
 se number
+set colorcolumn=80
 
 autocmd FileType c set shiftwidth=2
 autocmd FileType c set tabstop=2
@@ -86,6 +87,7 @@ call vundle#begin()
 "Plugin 'valloric/youcompleteme'
 
 " All of your Plugins must be added before the following line
+Plugin 'AnsiEsc.vim'
 call vundle#end()            " required
 "filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -99,3 +101,5 @@ call vundle#end()            " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/

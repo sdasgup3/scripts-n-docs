@@ -17,13 +17,13 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = 1.00;
 @ISA     = qw(Exporter);
 @EXPORT =
-  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads numlines arrayAllSame diffStrings);
+  qw(createDir execute info passInfo failInfo warnInfo display toHex toDec printwithspaces dec2bin signExtend float2binary bin2hex split_filename trim debugInfo removequotes joinarray printMap printArray myGrep max min scalarToArray arrayToMap printMapArray belongsTo belongsTo3 compareMaps initThreads numlines arrayAllSame diffStrings compareMaps compareMapArray);
 @EXPORT_OK = qw();
 
 our $home = $ENV{'HOME'};
 
 sub printStringDiff {
-    my ( $s1, $s2 , $message) = @_;
+    my ( $s1, $s2, $message ) = @_;
 
     if ( $s1 eq $s2 ) {
         return;
@@ -258,7 +258,7 @@ sub execute {
 
 sub info {
     my $args = shift @_;
-    system("echo  \e[4m\e[1m\e[34m$args\e[0m");
+    system("echo  Info:\e[4m\e[1m\e[34m$args\e[0m");
 }
 
 sub passInfo {
@@ -800,6 +800,53 @@ sub removequotes {
 
     $arg =~ s/"//g;
     return $arg;
+}
+
+## Check if number of keys is same
+## and keys are same
+sub compareMap {
+    my $map1_ref = shift @_;
+    my $map2_ref = shift @_;
+
+    my %map1 = %{$map1_ref};
+    my %map2 = %{$map2_ref};
+
+    if ( scalar( keys %map1 ) != scalar( keys %map2 ) ) {
+        return 0;
+    }
+
+    for my $key ( keys %map1 ) {
+        if ( !exists $map2{$key} ) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+## Moreover the array count is the same
+sub compareMapArray {
+    my $map1_ref = shift @_;
+    my $map2_ref = shift @_;
+
+    my %map1 = %{$map1_ref};
+    my %map2 = %{$map2_ref};
+
+    my $cmp = compareMap( $map1_ref, $map2_ref );
+    if ( $cmp == 0 ) {
+
+        return 0;
+    }
+
+    for my $key ( keys %map1 ) {
+        my @arr1 = $map1{$key};
+        my @arr2 = $map1{$key};
+        if ( scalar(@arr1) != scalar(@arr2) ) {
+            return 0;
+        }
+    }
+
+    return 1;
 }
 
 1;

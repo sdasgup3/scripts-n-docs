@@ -1,7 +1,22 @@
 # Workflows
+
+## Working with Binaries
+```
+readelf --symbols ./a.out  | grep _start
+readelf --sections ./a.out   | grep ".text"
+objdump -f ./a.out
+objdump --dwarf=info test5.o
+objdump --dwarf=loc tracedprog2
+
+gcc sym2addr-dwarf.c -ldwarf -I/usr/local/google/home/sdasgup/Install/libdwarf-20181024/libdwarf/ -lelf
+info address symbol
+```
+
+
 ## Targetting ISA
 ```
 -march=haswell
+-mlong-double-128 -O0 -mno-80387
 ```
 
 ## k5 update
@@ -47,13 +62,7 @@ cd idea-IC-172.4343.14/
 ./bin/idea.sh
 
 Application Cnfig VM options:
--Xms64m
--Xmx1024m
--Xss32m
--XX:+TieredCompilation
--Djava.awt.headless=true
--Djava.library.path="LD_LIBRARY_PATH:/home/sdasgup3/Github/k/k-distribution/target/release/k/lib/native/linux64/"
--ea
+-Xms64m -Xmx1024m -Xss32m -XX:+TieredCompilation -Djava.awt.headless=true -Djava.library.path="LD_LIBRARY_PATH:/home/sdasgup3/Github/home/sdasgup3/Github/k5/k-distribution/target/release/k//lib/" -ea
 
 Program Arguments:
 -krun -v --debug  /home/sdasgup3/Github/learning-K/test.test15
@@ -378,6 +387,17 @@ sudo apt-get install libgtk2.0-0:i386 libsm6:i386
   cmake -G "Unix Makefiles" -DPYTHON_EXECUTABLE:FILEPATH=/home/sdasgup3/Install/Python-2.7.install/bin/python   -DPYTHON_LIBRARIES=/home/sdasgup3/Install/Python-2.7.install/lib/libpython2.7.so -DPYTHON_LIBRARY:FILEPATH=/home/sdasgup3/Install/Python-2.7.install/lib/libpython2.7.so   -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX=${HOME}/Install/llvm.install -DLLVM_TARGETS_TO_BUILD="host"  ../..
   make -j 8
   ```
+## Attempt 2
+```
+http://lldb.llvm.org/build.html
+llvm/build/Debug$ cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++  -DCMAKE_INSTALL_PREFIX=~/Install/llvm.debug.install/ -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="Debug" -DLLVM_TARGETS_TO_BUILD="host"  -DLLDB_EXPORT_ALL_SYMBOLS=1  ../..
+make
+// If complaints on swig latest
+http://www.swig.org/download.html
+which in turn need
+https://stackoverflow.com/questions/2263404/what-package-i-should-install-for-pcre-devel
+````
+
 
 ## Python
 ### build
@@ -1000,6 +1020,8 @@ Cntrl-a d // detach
 Cntrl-a :quit //kill the entered session
 
 Cntrl-a a // go to the begging of a line
+
+Cntrl-a k // kill current window
 ```
 
 ## tmux

@@ -17,10 +17,14 @@ use utils;
 # Using GetOPtions
 my @file = ();
 my @show = ();
+my $lc = "";
+my $uc = "";
 
 GetOptions(
     "file:s" => \@file,
     "show:s" => \@show,
+    "lc" => \$lc,
+    "uc" => \$uc,
 ) or die("Error in command line arguments\n");
 
 # File Open
@@ -36,12 +40,26 @@ for my $line0 (@lines0) {
     chomp $line0;
     $line0 =~ s/(\S*)\s*.*/$1/g;
 
+    if("" ne $lc) {
+      $line0 = lc($line0)
+    }
+    if("" ne $uc) {
+      $line0 = uc($line0)
+    }
+
     $map0{$line0} = 1;
 }
 
 for my $line1 (@lines1) {
     chomp $line1;
     $line1 =~ s/(\S*)\s*.*/$1/g;
+
+    if("" ne $lc) {
+      $line1 = lc($line1)
+    }
+    if("" ne $uc) {
+      $line1 = uc($line1)
+    }
 
     $map1{$line1} = 1;
 }

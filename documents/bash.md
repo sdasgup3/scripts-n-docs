@@ -4,6 +4,11 @@
 # Syntax
 
 ## `sed` experience
+- Replace string
+```
+ls  | parallel "sed -i '-e s/.target/_start/g' {}"
+```
+
 - Pattern Match
   ```
   Input: <A>...</A> <B>...</B>
@@ -13,6 +18,15 @@
   Command:
   echo "<A>...</A> <B>...</B>" | sed -e 's/\(<[^</]*>\)/\n\1/g'
   ```
+- Delete a particular string in a file
+  ```
+  sed -i '/pattern to match/d' ./infile
+  ```
+- Delete a particualr line
+  ```
+  sed -i 'nd' src/20000112-1.c
+  ```
+
 - Delete linesmatching a string
   ```
     sed -e '/string/d'
