@@ -1,5 +1,38 @@
 ## Git
 
+## Undo
+### Git pull merge
+```
+git merge --abort
+```
+
+###  Dit add
+  - Before commiting
+    - ```git reset <file>```
+    - This will remove it from the current index (the "about to be committed" list)
+without changing anything else. Note that ```git reset <file>``` is short for
+```git reset HEAD <file>```
+    - You can use git reset without any file name to undo all due changes. This can come in handy when there are too many files to be listed one by one in a reasonable amount of time.
+
+  - After commiting
+  ```git reset (--hard) HEAD~1```
+
+### Git rm
+  - Before commiting
+  ```
+    git reset
+    git checkout -- $(git ls-files -d)
+  ```
+  - After commiting
+  ```
+    git reset (--hard) HEAD~1
+  ```
+
+## Git pull rebase
+```
+git pull upstream master --rebase 
+```
+
 ## Commit without a new log
 ```
 git add toplev.h toplev.c ; git commit --amend --no-edit
@@ -327,27 +360,6 @@ git branch -d <name>
 #### Delete master branch
 [link](http://matthew-brett.github.io/pydagogue/gh_delete_master.html)
 
-### Undo git add
-#### Before commiting
-- You can undo git add before commit with ```git reset <file>```
-- This will remove it from the current index (the "about to be committed" list)
-without changing anything else. Note that ```git reset <file>``` is short for
-```git reset HEAD <file>```
-- You can use git reset without any file name to undo all due changes. This can come in handy when there are too many files to be listed one by one in a reasonable amount of time.
-
-#### After commiting
-```git reset (--hard) HEAD~1```
-
-### Undo git rm
-#### Before commiting
-```
-git reset
-git checkout -- $(git ls-files -d)
-```
-#### After commiting
-```
-git reset (--hard) HEAD~1
-```
 
 ### git mv (rename)
 

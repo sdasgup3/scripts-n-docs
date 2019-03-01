@@ -26,6 +26,7 @@ git pull upstream master
 git push origin master
 git checkout working
 git rebase master
+git submodule update --init --recursive
 git push origin working -f
 mvn package
 ```

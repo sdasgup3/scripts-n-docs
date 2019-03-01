@@ -28,8 +28,8 @@ export MAVEN_OPTS=-XX:+TieredCompilation
  . /home/sdasgup3/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 
-export PATH=${PROTOBUF}/bin:${IDA}:${K_BIN}:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:${LLVM_HOME}/bin:$PATH
-export LD_LIBRARY_PATH=${PROTOBUF}/lib:${K_LIB}:${PIP_INSTALLS}/lib:${LLVM_HOME}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
+export PATH=${PROTOBUF}/bin:${IDA}:${K_BIN}:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:$PATH
+export LD_LIBRARY_PATH=${PROTOBUF}/lib:${K_LIB}:${PIP_INSTALLS}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
 export R_LIBS=${HOME}/Install/R_LIBS/
 export MCSEMA_HOME=${HOME}/Github/mcsema_latest_master/
 export TRAILOFBITS_LIBRARIES=/home/sdasgup3/Github/cxx-common/libraries
