@@ -1,10 +1,28 @@
 
 
-## Address PLDI Shepheard comments
-  - Email June 
-## Contribuion to Sail
-## Make public the local stoke changes
+# Address PLDI Shepheard comments
+  - Email June
+  - Address the minor comments.
+# Contribuion to Sail
+# Make public the local stoke changes. Inform Strata outhors.
+  ## All stoke repos
+  - The forked [origin](git@github.com:sdasgup3/stoke.git) contains the following branches
+    - develop: In sync with [upstream](https://github.com/StanfordPL/stoke.git).
+    - improve_instruction_support: The branch compatible with developed and contained all the changes from strata.stoke.ubuntu(see below). This is locally hosted in repo (/home/sdasgup3/Github/develop_stoke). **Recommended for use.**
+    - improve_instruction_support_PR1/improve_instruction_support_PR2: Used for pull requests. Locally hosted in repo (/home/sdasgup3/Github/develop_stoke_PR).
+    - master.stoke.ubuntu: The master branch used to compare against strata.stoke.ubuntu. **Deprecated**. Locally hosted in repo (/home/sdasgup3/Github/master_stoke).
+  - The [origin](git@github.com:sdasgup3/strata-stoke.git) contains the following branches
+    - strata.stoke.ubuntu: The branch is used to developed the semantics on top of strata's stoke branch. Localy hosted at /home/sdasgup3/Github/strata/stoke.
+    - strata.stoke.matte: Mirror of above to be used for tyler.
 
+  ## Workshop paper
+# Learn the decoder
+# KEQ
+
+
+
+
+-----------------------------------------
 
 ## Important stoke function
  - specgen_is_base

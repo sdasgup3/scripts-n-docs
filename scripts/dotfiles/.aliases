@@ -16,10 +16,15 @@ alias julia='/home/sdasgup3/Install/julia/julia'
 alias cc='/usr/bin/gcc'
 alias infopl="/home/sdasgup3/Github/binary-decompilation/x86-semantics/scripts/infonum.pl"
 alias idea="/home/sdasgup3/Install/idea-IC-172.4343.14/bin/idea.sh"
+
 alias sc="/home/sdasgup3/Github/strata/stoke/bin/stoke_debug_circuit"
 alias sf="/home/sdasgup3/Github/master_stoke/bin/stoke_debug_formula"
+alias sd="/home/sdasgup3/Github/develop_stoke/bin/stoke_debug_circuit"
+
 alias hc="/home/sdasgup3/Github/strata/stoke/bin/stoke_which_handler"
 alias hf="/home/sdasgup3/Github/master_stoke/bin/stoke_which_handler"
+alias hd="/home/sdasgup3/Github/develop_stoke/bin/stoke_which_handler"
+
 alias ssh="ssh -X"
 alias g="gcc -m64 -march=haswell -fno-asynchronous-unwind-tables"
 alias worddiff="git diff --word-diff=porcelain | awk -v red=\"$(tput setaf 1)\" -v green=\"$(tput setaf 2)\" -v reset=\"$(tput sgr0)\" -f ~/scripts-n-docs/scripts/bash/worddiff.awk"

@@ -35,6 +35,17 @@ mvn package
 
 ## Stoke/Strata
 
+### All stoke repos
+- The forked [origin](git@github.com:sdasgup3/stoke.git) contains the following branches
+  - develop: In sync with [upstream](https://github.com/StanfordPL/stoke.git).
+  - improve_instruction_support: The branch compatible with developed and contained all the changes from strata.stoke.ubuntu(see below). This is locally hosted in repo (/home/sdasgup3/Github/develop_stoke). **Recommended for use.**
+  - improve_instruction_support_PR1/improve_instruction_support_PR2: Used for pull requests. Locally hosted in repo (/home/sdasgup3/Github/develop_stoke_PR).
+  - master.stoke.ubuntu: The master branch used to compare against strata.stoke.ubuntu. **Deprecated**. Locally hosted in repo (/home/sdasgup3/Github/master_stoke).
+- The [origin](git@github.com:sdasgup3/strata-stoke.git) contains the following branches
+  - strata.stoke.ubuntu: The branch is used to developed the semantics on top of strata's stoke branch. Localy hosted at /home/sdasgup3/Github/strata/stoke.
+  - strata.stoke.matte: Mirror of above to be used for tyler.
+
+
 ### Stoke
 ```
 ./configure.sh
@@ -49,7 +60,6 @@ cd ..
 make debug
 cd ../../../
 make -j 8 debug
-
 ```
 
 
@@ -411,7 +421,8 @@ https://stackoverflow.com/questions/2263404/what-package-i-should-install-for-pc
 ### Pip
     - Installing
     ```
-    $ curl -O https://svn.apache.org/repos/asf/oodt/tools/oodtsite.publisher/trunk/distribute_setup.py
+    $ curl -O
+     https://svn.apache.org/repos/asf/oodt/tools/oodtsite.publisher/trunk/distribute_setup.py
     $ <new_python_bin>/python distribute_setup.py
     $ <new_python_bin>/easy_install pip
     ```
@@ -602,7 +613,7 @@ sudo update-alternatives --set c++ /usr/bin/g++
 The last step is configuring the default commands for gcc, g++. It's easy to switch between 4.3 and 4.4 interactively:
 
 ```
-sudo update-alternatives --config gcc
+  sudo update-alternatives --config gcc
 sudo update-alternatives --config g++
 ```
 Or Use slaves
@@ -612,8 +623,7 @@ sudo apt-get update
 sudo apt-get install gcc-4.9 g++-4.9
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6
-```
-
+``
 ## xargs
   ```
   find . -name ".." -o -name ".." | xargs -I'abc' mv 'abc' ~/Junk
