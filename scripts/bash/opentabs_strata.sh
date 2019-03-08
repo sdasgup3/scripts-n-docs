@@ -14,7 +14,7 @@ titles[7]="stoke"
 titles[8]="stoke_build"
 titles[9]="master_stoke"
 titles[10]="master_stoke_build"
-titles[11]="strata docs"
+titles[11]="develop Stoke"
 titles[12]="classification"
 titles[13]="htop"
 titles[14]="strata.stoke.matte"
@@ -45,7 +45,7 @@ cmds[18]="cd /home/sdasgup3/Github/k5"
 cmds[19]="cd /home/sdasgup3/Junk/"
 
 for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do
-  options+=($tab --title="${titles[i]}"  -e "bash -c \"${cmds[i]} ; bash\"" )          
+  options+=($tab --title="${titles[i]}"  -e "bash -c \"${cmds[i]} ; bash\"" )
 done
 
 gnome-terminal "${options[@]}"

@@ -1,5 +1,23 @@
 # Workflows
 
+## VM up and running
+```
+sudo apt-get install vim-gnome git figlet curl
+gvim ~/.ssh/githubkey_rsa
+chmod 700 !$
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/githubkey_rsa
+mkdir Github
+git clone git@github.com:sdasgup3/scripts-n-docs.git
+ln -s scripts-n-docs/scripts/dotfiles/.bashrc ~/
+ln -s scripts-n-docs/scripts/dotfiles/.vimrc ~/
+ln -s scripts-n-docs/scripts/dotfiles/.inputrc ~/
+ln -s scripts-n-docs/scripts/dotfiles/.aliases ~/
+. ~/.bashrc
+. ~/.aliases
+
+```
+
 ## Working with Binaries
 ```
 readelf --symbols ./a.out  | grep _start

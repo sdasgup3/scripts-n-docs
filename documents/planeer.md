@@ -12,6 +12,10 @@
   - Workshop paper
 # Learn the decoder
 # KEQ
+  - Clarifying questions
+    - Why example run have remaining contents in the k cell.
+    - what is llvm/x86-preexec?
+    - krun X86 does complete all rip, k cell still have something.
 
 
 
