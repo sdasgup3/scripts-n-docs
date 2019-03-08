@@ -1,0 +1,14 @@
+[user]
+	name = Sandeep Dasgupta
+	email = sdasgup3@illinois.edu
+[alias]
+	d = difftool
+[credential]
+	helper = cache
+[diff]
+#    tool = gvimdiff
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"

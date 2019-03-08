@@ -114,6 +114,10 @@ mvn package
 /home/sdasgup3/Github/k/shell/src/main/java/org/kframework/main/Main.java:235
 ```
 
+### K framework Known Issues
+  - https://github.com/kframework/k/pull/259/commits
+
+
 ## IDA
 ```
 sudo apt-get install libgtk2.0-0:i386 libsm6:i386
