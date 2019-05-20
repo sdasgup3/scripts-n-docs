@@ -1,8 +1,23 @@
 # Workflows
 
+## Reopt
+```
+cd reopt
+
+// install latest ghc and cabal
+sudo add-apt-repository ppa:hvr/ghc
+sudo apt-get update
+sudo apt-get install ghc-8.2.2 cabal-install-2.2
+sudo ln -s /opt/ghc/bin/ghc-8.2.2 /usr/bin/ghc
+sudo ln -s /opt/ghc/bin/ghci /usr/bin/ghci
+sudo ln -s /opt/cabal/bin/cabal-2.2 /usr/bin/cabal
+cabal update
+cabal new-build exe:reopt
+```
+
 ## VM up and running
 ```
-sudo apt-get install vim-gnome git figlet curl
+sudo apt-get install vim-gnome git figlet curl htop z3 parallel
 gvim ~/.ssh/githubkey_rsa
 chmod 700 !$
 eval "$(ssh-agent -s)"
@@ -15,7 +30,7 @@ ln -s scripts-n-docs/scripts/dotfiles/.inputrc ~/
 ln -s scripts-n-docs/scripts/dotfiles/.aliases ~/
 . ~/.bashrc
 . ~/.aliases
-
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 ## Working with Binaries
@@ -51,9 +66,9 @@ mvn package
 
 # Installations
 
-## Stoke/Strata
 
-### All stoke repos
+## All Repos
+### Stoke
 - The forked [origin](git@github.com:sdasgup3/stoke.git) contains the following branches
   - develop: In sync with [upstream](https://github.com/StanfordPL/stoke.git).
   - improve_instruction_support: The branch compatible with developed and contained all the changes from strata.stoke.ubuntu(see below). This is locally hosted in repo (/home/sdasgup3/Github/develop_stoke). **Recommended for use.**
@@ -63,7 +78,13 @@ mvn package
   - strata.stoke.ubuntu: The branch is used to developed the semantics on top of strata's stoke branch. Localy hosted at /home/sdasgup3/Github/strata/stoke.
   - strata.stoke.matte: Mirror of above to be used for tyler.
 
+### K
+- The forked [origin](https://github.com/sdasgup3/k5) contains the following branches
+  - working: For artifact evaluation
+  - master: Synced with master upstream
+  - keq: Separate branch for keq. Note keq is enabled in master as well.
 
+## Stoke/Strata
 ### Stoke
 ```
 ./configure.sh
@@ -82,7 +103,7 @@ make -j 8 debug
 
 
 
-## ItelliJ (K framework setup)
+## IntelliJ (K framework setup)
 ```
   export K_OPTS="-Xmx4g"
 
@@ -95,6 +116,15 @@ Application Cnfig VM options:
 
 Program Arguments:
 -krun -v --debug  /home/sdasgup3/Github/learning-K/test.test15
+
+org.kframework.main.Main
+-Xms64m
+-Xmx1024m
+-Xss32m
+-XX:+TieredCompilation
+-Djava.awt.headless=true
+-Djava.library.path="LD_LIBRARY_PATH:/home/sdasgup3/Github/home/sdasgup3/Github/k5/k-distribution/target/release/k//lib/"
+-ea
 
 
 Env paths:
@@ -539,12 +569,12 @@ https://stackoverflow.com/questions/2263404/what-package-i-should-install-for-pc
   - ncdu
 
 ## Atom Usage
-### Multiline selection
+### Multi line selection
   - Highlight multiple lines however you like.
   - Use the Selection|Split Into Lines command (press Ctrl+Shift+P and type Split Selection Into Lines) to split the multiline selection into a selection for each line.
   - Press the right arrow by itself to reveal the cursor at the end of the selections.
 
-### Toggle Uper/Lower
+### Toggle Upper/Lower
  - Convert to Upper Case	⌘-k-u
  - Convert to Lower Case	⌘-k-L
 
