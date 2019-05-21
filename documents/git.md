@@ -6,7 +6,7 @@
 git merge --abort
 ```
 
-###  Dit add
+###  Git add
   - Before commiting
     - ```git reset <file>```
     - This will remove it from the current index (the "about to be committed" list)
@@ -30,7 +30,7 @@ without changing anything else. Note that ```git reset <file>``` is short for
 
 ## Git pull rebase
 ```
-git pull upstream master --rebase 
+git pull upstream master --rebase
 ```
 
 ## Commit without a new log
