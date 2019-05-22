@@ -1,5 +1,11 @@
 # Workflows
 
+## python formatter
+```
+pip install --upgrade autopep8
+autopep8 --in-place --aggressive <file.py>
+```
+
 ## Reopt
 ```
 cd reopt

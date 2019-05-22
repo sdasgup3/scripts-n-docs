@@ -1,15 +1,15 @@
 #!/bin/bash
 set -exv
 
-INSTALL_PREFIX=${HOME}/Install/llvm.release.install/
-HOST_GCC=/software/gcc-5.3/
+INSTALL_PREFIX=${HOME}/Install/llvm/llvm.4.0.0.install/
+#HOST_GCC=/software/gcc-5.3/
 CPUS=$(nproc)
-echo $HOST_GCC
-cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++  -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="Release" -DLLVM_TARGETS_TO_BUILD="host" ../../
+#echo $HOST_GCC
+cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++  -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DLLVM_TARGETS_TO_BUILD="host" ../llvm-4.0.0.src/
 make -j ${CPUS} ${VERBOSE}
 
 # install it
-rm -rf ${INSTALL_PREFIX}
+#rm -rf ${INSTALL_PREFIX}
 make install
 
 # we need some addl bits that are not normally installed

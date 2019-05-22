@@ -7,6 +7,11 @@
   - [Different LLVM IRs](https://cranelift.readthedocs.io/en/latest/compare-llvm.html#intermediate-representations)
   - [MC Project](http://blog.llvm.org/2010/04/intro-to-llvm-mc-project.html)
 
+- Builds/Writing Passes
+  - [llvm-dev-meeting-tutorial-2015](https://github.com/quarkslab/llvm-dev-meeting-tutorial-2015)
+  - [clang-llvm-tutorial](https://github.com/lijiansong/clang-llvm-tutorial)
+  - [Developing passes out of source](http://llvm.org/docs/CMake.html#developing-llvm-passes-out-of-source)
+
 
 
 ### Miscellaneous Reads
