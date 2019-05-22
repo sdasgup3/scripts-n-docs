@@ -1,11 +1,21 @@
 # Compiler Techniques and tools
 
 ## LLVM
- - https://github.com/draperlaboratory/fracture/wiki
+ - Backend
+  - https://github.com/draperlaboratory/fracture/wiki
+  - [Life of an instruction in LLVM by Eli](https://eli.thegreenplace.net/2012/11/24/life-of-an-instruction-in-llvm)
+  - [Different LLVM IRs](https://cranelift.readthedocs.io/en/latest/compare-llvm.html#intermediate-representations)
+  - [MC Project](http://blog.llvm.org/2010/04/intro-to-llvm-mc-project.html)
+
 
 
 ### Miscellaneous Reads
   - [Tail Call Optimizations](http://web.archive.org/web/20111030134120/http://www.sidhe.org/~dan/blog/archives/000211.html)
+
+# Program Synthesis
+ - [Adrian Sampson: Program Synthesis is Possible](https://www.cs.cornell.edu/~asampson/blog/minisynth.html)
+ - [A program Synthesis Primer](https://barghouthi.github.io/2017/04/24/synthesis-primer/)
+ - [Program Synthesis Explained](https://homes.cs.washington.edu/~bornholt/post/synthesis-explained.html)
 
 
 # Machine Learning
