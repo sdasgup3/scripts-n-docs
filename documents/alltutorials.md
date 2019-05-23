@@ -11,6 +11,10 @@
   - [llvm-dev-meeting-tutorial-2015](https://github.com/quarkslab/llvm-dev-meeting-tutorial-2015)
   - [clang-llvm-tutorial](https://github.com/lijiansong/clang-llvm-tutorial)
   - [Developing passes out of source](http://llvm.org/docs/CMake.html#developing-llvm-passes-out-of-source)
+  - [Write LLVM Pass](http://llvm.org/docs/WritingAnLLVMPass.html)
+  - [Run a LLVM pass automatically with clang](https://www.cs.cornell.edu/~asampson/blog/clangpass.html)
+  - [LLVM for Grad Students](https://www.cs.cornell.edu/~asampson/blog/llvm.html)
+  - [LLVM Debugging Tips and Tricks](http://bholt.org/posts/llvm-debugging.html)
 
 
 
