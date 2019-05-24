@@ -56,6 +56,19 @@
   - [Stanford CS230: Deep Learning | Autumn 2018](https://www.youtube.com/watch?v=PySo_6S4ZAg&list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb)
 
 
+# Z3
+ - [SAT/SMT by Example](https://yurichev.com/writings/SAT_SMT_by_example.pdf)
+ - [z3py-tutorial](https://github.com/ericpony/z3py-tutorial)
+   - [Z3 API in Python](http://ericpony.github.io/z3py-tutorial/guide-examples.htm)
+   - [z3 playground](https://github.com/0vercl0k/z3-playground)
+   - [Python SymEx Using Z3](https://github.com/thomasjball/PyExZ3)
+ - [Programming Z3](https://theory.stanford.edu/~nikolaj/programmingz3.html)
+
+# Reverse Engineering
+  - [ShortJump](http://0xeb.net/)
+    - [Using Z3 with IDA to simplify arithmetic operations in functions](http://0xeb.net/2018/03/using-z3-with-ida-to-simplify-arithmetic-operations-in-functions/)
+    - [Writing a simple x86 emulator with IDAPython](http://0xeb.net/2018/02/writing-a-simple-x86-emulator-with-idapython/)
+
 # Formal Methods
 ##  Programming for Correctness
   - [Weakest precondtions](https://www.youtube.com/watch?v=JZUTbFlKDzo&list=PL4h_iyQepxHgF_tFXlCZQG_TudIfSU8t5&index=1)
