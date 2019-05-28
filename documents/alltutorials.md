@@ -1,6 +1,7 @@
 # Compiler Techniques and tools
 
-## LLVM
+## Compilers
+#### LLVM
  - Backend
   - https://github.com/draperlaboratory/fracture/wiki
   - [Life of an instruction in LLVM by Eli](https://eli.thegreenplace.net/2012/11/24/life-of-an-instruction-in-llvm)
@@ -15,7 +16,10 @@
   - [Run a LLVM pass automatically with clang](https://www.cs.cornell.edu/~asampson/blog/clangpass.html)
   - [LLVM for Grad Students](https://www.cs.cornell.edu/~asampson/blog/llvm.html)
   - [LLVM Debugging Tips and Tricks](http://bholt.org/posts/llvm-debugging.html)
+  - [Analyzing function CFGs with LLVM](https://eli.thegreenplace.net/2013/09/16/analyzing-function-cfgs-with-llvm)
 
+## Debuggers
+  - [Writing a Linux Debugger](https://blog.tartanllama.xyz/writing-a-linux-debugger-setup/)
 
 
 ### Miscellaneous Reads
@@ -65,11 +69,52 @@
  - [Programming Z3](https://theory.stanford.edu/~nikolaj/programmingz3.html)
 
 # Reverse Engineering
-  - [ShortJump](http://0xeb.net/)
-    - [Using Z3 with IDA to simplify arithmetic operations in functions](http://0xeb.net/2018/03/using-z3-with-ida-to-simplify-arithmetic-operations-in-functions/)
-    - [Writing a simple x86 emulator with IDAPython](http://0xeb.net/2018/02/writing-a-simple-x86-emulator-with-idapython/)
+
+  - Blogs
+    - [ShortJump](http://0xeb.net/)  
+
+  - Articles  
+    - [Liveness Analysis](https://reverseengineering.stackexchange.com/questions/11238/variable-liveness-analysis-on-binaries)
+
+  - Tools  
+    - IDA
+      - Shortjump
+        - [Using Z3 with IDA to simplify arithmetic operations in functions](http://0xeb.net/2018/03/using-z3-with-ida-to-simplify-arithmetic-operations-in-functions/)
+        - [Writing a simple x86 emulator with IDAPython](http://0xeb.net/2018/02/writing-a-simple-x86-emulator-with-idapython/)
+      - [IDAPython Tutorial with example script](https://www.youtube.com/watch?v=5ehI2wgcSGo)
+      - [Using IdaPython to make your life easier](https://unit42.paloaltonetworks.com/tag/idapython/)
+      - [List of IdaPlugins](https://github.com/onethawt/idaplugins-list)
+      - [Running scripts from the command line with idascript](http://www.hexblog.com/?p=128)
+      - [IDAPython Project for HexRays](https://github.com/idapython/src)
+      - [IDAPython Doc](https://www.hex-rays.com/products/ida/support/idapython_docs/)
+      - [IDA switches](https://www.hex-rays.com/products/ida/support/idadoc/417.shtml)
+    - [LIEF - Library to Instrument Executable Formats](https://github.com/lief-project/LIEF)
+    - [Powerful Disassembler Library For x86/AMD64](https://github.com/gdabah/distorm)
+      - [wiki](https://github.com/gdabah/distorm/wiki)
+      - [Instruction decoding](https://github.com/gdabah/distorm/wiki/x86x64MachineCode)
+    - [Angr CLE](https://github.com/angr/cle)
+    - [libelfin - C++11 ELF/DWARF parser](https://github.com/aclements/libelfin)  
+    - [Triton - Dynamic Binary Analysis (DBA) framework](https://github.com/JonathanSalwan/Triton)
+    - [pyelftools - Parsing ELF and DWARF in Python](https://github.com/eliben/pyelftools)
+    - Ghidra
+      - Shortjump
+        - [Ghidra: A quick overview for the curious](http://0xeb.net/2019/03/ghidra-a-quick-overview/#more-232)
 
 # Formal Methods
 ##  Programming for Correctness
   - [Weakest precondtions](https://www.youtube.com/watch?v=JZUTbFlKDzo&list=PL4h_iyQepxHgF_tFXlCZQG_TudIfSU8t5&index=1)
       - [UTAustin Vedio Blog](https://www.youtube.com/channel/UCZuEJqE58wmvL8wlGGSYSNw/videos)
+
+# Technical Bloggers
+  - [Simon Brand](https://blog.tartanllama.xyz/posts/)
+  - [SHORTJUMP: Reversing engineering, programming and what not…](http://0xeb.net/2019/03/ghidra-a-quick-overview/#more-232)
+
+# ISA semantics
+  - [Peter Sewell](https://www.cl.cam.ac.uk/~pes20/)
+    - [The Semantics of Power and ARM Multiprocessor Programs](https://www.cl.cam.ac.uk/~pes20/weakmemory/index4.html)
+  - [Vedio: ISA Semantics for ARMv8-A, RISC-V, and CHERI-MIPS](https://www.youtube.com/watch?v=kvbJE6hxs7k)
+  - [CakeML](https://cakeml.org/)
+
+# Languages
+  - Python
+    - [What is \_\_init__.py](https://stackoverflow.com/questions/448271/what-is-init-py-for)
