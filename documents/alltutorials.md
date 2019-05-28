@@ -15,6 +15,7 @@
   - [Run a LLVM pass automatically with clang](https://www.cs.cornell.edu/~asampson/blog/clangpass.html)
   - [LLVM for Grad Students](https://www.cs.cornell.edu/~asampson/blog/llvm.html)
   - [LLVM Debugging Tips and Tricks](http://bholt.org/posts/llvm-debugging.html)
+  - [Analyzing function CFGs with LLVM](https://eli.thegreenplace.net/2013/09/16/analyzing-function-cfgs-with-llvm)
 
 
 
@@ -68,6 +69,12 @@
   - [ShortJump](http://0xeb.net/)
     - [Using Z3 with IDA to simplify arithmetic operations in functions](http://0xeb.net/2018/03/using-z3-with-ida-to-simplify-arithmetic-operations-in-functions/)
     - [Writing a simple x86 emulator with IDAPython](http://0xeb.net/2018/02/writing-a-simple-x86-emulator-with-idapython/)
+  - IDA
+    - [IDAPython Tutorial with example script](https://www.youtube.com/watch?v=5ehI2wgcSGo)
+    - [Using IdaPython to make your life easier](https://unit42.paloaltonetworks.com/tag/idapython/)
+    - [List of IdaPlugins](https://github.com/onethawt/idaplugins-list)
+    - [Running scripts from the command line with idascript](http://www.hexblog.com/?p=128)
+    - [IDAPython Project for HexRays](https://github.com/idapython/src)
 
 # Formal Methods
 ##  Programming for Correctness
