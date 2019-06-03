@@ -99,6 +99,15 @@
     - Ghidra
       - Shortjump
         - [Ghidra: A quick overview for the curious](http://0xeb.net/2019/03/ghidra-a-quick-overview/#more-232)
+  - [ShortJump](http://0xeb.net/)
+    - [Using Z3 with IDA to simplify arithmetic operations in functions](http://0xeb.net/2018/03/using-z3-with-ida-to-simplify-arithmetic-operations-in-functions/)
+    - [Writing a simple x86 emulator with IDAPython](http://0xeb.net/2018/02/writing-a-simple-x86-emulator-with-idapython/)
+  - IDA
+    - [IDAPython Tutorial with example script](https://www.youtube.com/watch?v=5ehI2wgcSGo)
+    - [Using IdaPython to make your life easier](https://unit42.paloaltonetworks.com/tag/idapython/)
+    - [List of IdaPlugins](https://github.com/onethawt/idaplugins-list)
+    - [Running scripts from the command line with idascript](http://www.hexblog.com/?p=128)
+    - [IDAPython Project for HexRays](https://github.com/idapython/src)
 
 # Formal Methods
 ##  Programming for Correctness
