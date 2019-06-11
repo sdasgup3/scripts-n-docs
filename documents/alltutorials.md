@@ -63,6 +63,7 @@
 
 
 # Z3
+ - [Rise4Fun](https://rise4fun.com/Z3/tutorial/guide)
  - [SAT/SMT by Example](https://yurichev.com/writings/SAT_SMT_by_example.pdf)
  - [z3py-tutorial](https://github.com/ericpony/z3py-tutorial)
    - [Z3 API in Python](http://ericpony.github.io/z3py-tutorial/guide-examples.htm)
