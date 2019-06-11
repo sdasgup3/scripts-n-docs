@@ -33,9 +33,11 @@
 
 # Machine Learning
 
-## Install tensor-flow
-  - https://www.tensorflow.org/install/pip
+## Tensor-flow
+  - [Install](https://www.tensorflow.org/install/pip)
   - [Tensorflow Playground](http://playground.tensorflow.org)
+  - MLIR
+    - [MLIR: A new intermediate representation and compiler framework](https://medium.com/tensorflow/mlir-a-new-intermediate-representation-and-compiler-framework-beba999ed18d)
 
 
 ## Books
