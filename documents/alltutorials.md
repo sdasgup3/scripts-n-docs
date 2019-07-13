@@ -17,6 +17,12 @@
   - [LLVM for Grad Students](https://www.cs.cornell.edu/~asampson/blog/llvm.html)
   - [LLVM Debugging Tips and Tricks](http://bholt.org/posts/llvm-debugging.html)
   - [Analyzing function CFGs with LLVM](https://eli.thegreenplace.net/2013/09/16/analyzing-function-cfgs-with-llvm)
+- Some off the shelf Analysis implementations
+  - [LLVMCallGraph](https://github.com/lihebi/LLVMCallGraph/blob/master/hebicg/hebicg.cpp)
+  - [LLVM-Dataflow-Examples](https://github.com/akashlevy/LLVM-Dataflow-Examples)
+  - [llvm-dataflow-graphs](https://github.com/k3ut0i/llvm-dataflow-graphs)
+- LLBD
+  - [LLVM Debugging Tips and Tricks](http://bholt.org/posts/llvm-debugging.html)
 
 ## Debuggers
   - [Writing a Linux Debugger](https://blog.tartanllama.xyz/writing-a-linux-debugger-setup/)
@@ -130,3 +136,5 @@
 # Languages
   - Python
     - [What is \_\_init__.py](https://stackoverflow.com/questions/448271/what-is-init-py-for)
+  - C++
+    - [template specialization](http://www.cplusplus.com/doc/oldtutorial/templates/)

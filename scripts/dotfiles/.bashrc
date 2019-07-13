@@ -19,10 +19,14 @@ PROTOBUF=${HOME}/Install/protobuf.install/
 STOKE_LIB=/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/system/build/gcc-4.9.4/debug/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/regex/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/filesystem/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/strata/stoke/src/ext/cvc4-1.4-build/lib/
 CIRCUIT=/home/sdasgup3/Github/strata-data/circuits/
 ################## K Config ###########################################
-#K_BIN=${HOME}/Github/k/k-distribution/target/release/k/bin:${HOME}/Github/k/k-distribution/target/release/k/lib/native/linux
-#K_LIB=${HOME}/Github/k/k-distribution/target/release/k//lib/native/linux64/:${HOME}/Github/k/k-distribution/target/release/k//lib/
-K_BIN=${HOME}/Github/k5/k-distribution/target/release/k/bin/
-K_LIB=${HOME}/Github/k5/k-distribution/target/release/k//lib/
+K_BIN=${HOME}/Github/k5_programV_working/k-distribution/target/release/k/bin
+K_LIB=${HOME}/Github/k5_programV_working/k-distribution/target/release/k//lib/
+
+#K_BIN=${HOME}/Github/k5/k-distribution/target/release/k/bin/
+#K_LIB=${HOME}/Github/k5/k-distribution/target/release/k//lib/
+
+#K_BIN=${HOME}/Github/keq/k-distribution/target/release/k/bin/
+#K_LIB=${HOME}/Github/keq/k-distribution/target/release/k//lib/
 export K_OPTS=-Xmx8g
 export MAVEN_OPTS=-XX:+TieredCompilation
  . /home/sdasgup3/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

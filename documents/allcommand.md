@@ -1,5 +1,20 @@
 # Workflows
 
+## LLVM GraphTraits
+```
+class GraphWriter:
+  typedef DOTGraphTraits<GraphType>           DOTTraits;
+  typedef GraphTraits<GraphType>              GTraits;
+
+  DOTTraits DTraits;
+
+  void writeNodes() {
+    // GTraits::nodes_begin for function *G is defined at CFG.h
+    for (node_iterator I = GTraits::nodes_begin(G), E = GTraits::nodes_end(G);
+         I != E; ++I)
+    }
+```
+
 ## python formatter
 ```
 pip install --upgrade autopep8
@@ -43,8 +58,8 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ## Working with Binaries
 ```
 readelf --symbols ./a.out  | grep _start
-readelf --sections ./a.out   | grep ".text"
-objdump -f ./a.out
+  readelf --sections ./a.out   | grep ".text"
+  objdump -f ./a.out
 objdump --dwarf=info test5.o
 objdump --dwarf=loc tracedprog2
 

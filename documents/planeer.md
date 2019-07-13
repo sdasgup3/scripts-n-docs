@@ -1,23 +1,84 @@
 
+# Preliminary Exam
+  - Member
+    - Internal
+      - Tao Xie
+      - Vikram Adve
+      - Grigore Rosu
+      - Elsa Gunter
+    - External
+      - Mathias Payer: https://nebelwelt.net/publications/files/17CC.pdf
+      - John Criswell
+      - Michael Franz (https://www.michaelfranz.com/)
+      Kapil Anand https://www.linkedin.com/in/kapil-anand-0a224259/
+      - Rajiv Barua : https://ece.umd.edu/~barua/welcome.html
+      - R. Sekar: https://www.cs.stonybrook.edu/people/faculty/RSekar
+
+  - Projects to target
+    - retdec: https://retdec.com/
+    - Mcsema
+    - fcd: https://github.com/zneak/fcd (https://www.linkedin.com/in/f%C3%A9lix-cloutier-32534648/?locale=en_US)
+    (https://www.felixcloutier.com/)
+    - dagger: https://github.com/repzret/dagger (https://www.linkedin.com/in/ahmedbougacha/)
+    - rev.ng: (https://rev.ng/)
+      - https://rev.ng/documentation.html
+    - Revgen
+      - http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=DF7B079691D507F0D32F2E793F07AD1D?doi=10.1.1.309.7126&rep=rep1&type=pdf
 
 # Address PLDI Shepheard comments
   - ~~Email June~~
   - ~~Address the minor comments.~~
 # Contribuion to Sail
 # Upstream Strata/Stoke update
-  - Make public the local stoke changes.
+  - ~~Make public the local stoke changes.~~
     - ~~Inform Strata outhors.~~
     - ~~Pull request~~
-    - Check if it is merged
+    - ~~Check if it is merged~~
   - Workshop paper
 # Learn the decoder
+# Mcsema
+  - How Mcsema access globals. What is some constructs are not decompiled propoerly. UIFs ??
 # KEQ
   - Clarifying questions
-    - Why example run have remaining contents in the k cell.
-    - what is llvm/x86-preexec?
-    - krun X86 does complete all rip, k cell still have something.
+    - ~~Split after call~~
+    - ~~There is no split of the X86~~
+    - ~~What is the idea of the spec file. 1 - 1 rule match~~
+    - ~~What is the s in hint file: (%sub,%EDI,s)~~
 
+    - ~~Flow~~
+      - ~~.c --> clang with split BB (using opt ??) --> ll~~ - ~~?? -> isel + hint~~
+      - ~~ll & .s -- (krun) --> xstate and lstate~~
+      - ~~xstate, lstate & hints -- (create_spec.py) --> specs~~
+    - ~~Is krun used needs to be derived from the same branch `keq`~~
+    - ~~Why example run have remaining contents in the k cell.~~
+    - ~~what is llvm/x86-preexec?~~
+    - ~~krun X86 does complete all rip, k cell still have something.~~
+    - ~~How the isel-out.s/hints/llvm is created.~~
+    - ~~Correspondence of instructions between isel-out.s and isel-out.s.state~~
+    - ~~prelude~~
 
+# G2
+  - March (30*3)
+    - new
+      - 686. Repeated String Match
+      - 119. Pascal's Triangle II *
+      - 1007. Minimum Domino Rotations For Equal Row
+      - 459. Repeated Substring Pattern
+      - 993	Cousins in Binary Tree
+      - 513	Find Bottom Left Tree Value
+      - 662	Maximum Width of Binary Tree
+      - 513	Find Bottom Left Tree Value
+      - 48	Rotate Image
+      - 39, 40, 216, 377 Combination Sum
+    - old
+      - 100. Same Tree
+      - 17. Letter Combinations of a Phone Number
+      - 22. Generate Parentheses
+      - 20. Valid Parentheses
+      - 118. Pascal's Triangle
+      - 637	Average of Levels in Binary Tree
+      - 107	Binary Tree Level Order Traversal II
+      - 102	Binary Tree Level Order Traversal
 
 
 -----------------------------------------
