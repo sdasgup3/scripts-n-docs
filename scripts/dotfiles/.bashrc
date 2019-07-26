@@ -8,7 +8,7 @@ if [ -f ~/.aliases ]; then
 fi
 
 export SVN_EDITOR=vim
-LLVM_TRUNCK_HOME=$HOME/Install/llvm.debug.install
+LLVM_TRUNCK_HOME=$HOME/Install/llvm/llvm.4.0.0.install/
 LLVM_HOME=$LLVM_TRUNCK_HOME
 PIP_INSTALLS=${HOME}/.local/
 OPROFILE=${HOME}/Install/oprofile.install/
@@ -19,9 +19,13 @@ PROTOBUF=${HOME}/Install/protobuf.install/
 STOKE_LIB=/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/system/build/gcc-4.9.4/debug/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/regex/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/filesystem/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/strata/stoke/src/ext/cvc4-1.4-build/lib/
 CIRCUIT=/home/sdasgup3/Github/strata-data/circuits/
 ################## K Config ###########################################
-K_BIN=${HOME}/Github/k5_programV_working/k-distribution/target/release/k/bin
-K_LIB=${HOME}/Github/k5_programV_working/k-distribution/target/release/k//lib/
-
+K_BIN=${HOME}/Github/k/k-distribution/target/release/k/bin
+K_BIN=${HOME}/Github/k/k-distribution/target/release/k/bin
+#K_BIN=${HOME}/Github/k5/k-distribution/target/release/k/bin
+#K_BIN=${HOME}/Github/k5/k-distribution/target/release/k/bin
+#K_LIB=${HOME}/Github/k5_programV_working/k-distribution/target/release/k//lib/
+#K_LIB=${HOME}/Github/k5_programV_working/k-distribution/target/release/k//lib/
+#
 #K_BIN=${HOME}/Github/k5/k-distribution/target/release/k/bin/
 #K_LIB=${HOME}/Github/k5/k-distribution/target/release/k//lib/
 
@@ -32,8 +36,8 @@ export MAVEN_OPTS=-XX:+TieredCompilation
  . /home/sdasgup3/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 
-export PATH=${PROTOBUF}/bin:${IDA}:${K_BIN}:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:$PATH
-export LD_LIBRARY_PATH=${PROTOBUF}/lib:${K_LIB}:${PIP_INSTALLS}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
+export PATH=${LLVM_HOME}/bin:${PROTOBUF}/bin:${IDA}:${K_BIN}:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:$PATH
+export LD_LIBRARY_PATH=${LLVM_HOME}/lib:${PROTOBUF}/lib:${K_LIB}:${PIP_INSTALLS}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
 export R_LIBS=${HOME}/Install/R_LIBS/
 export MCSEMA_HOME=${HOME}/Github/mcsema_latest_master/
 export TRAILOFBITS_LIBRARIES=/home/sdasgup3/Github/cxx-common/libraries

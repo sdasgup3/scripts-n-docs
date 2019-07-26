@@ -27,6 +27,9 @@
 ## Debuggers
   - [Writing a Linux Debugger](https://blog.tartanllama.xyz/writing-a-linux-debugger-setup/)
 
+## CMakeBuild
+  - [How do I link when building with llvm libraries?](https://stackoverflow.com/questions/33948633/how-do-i-link-when-building-with-llvm-libraries)
+  - [Creating a LLVM project](http://llvm.org/docs/Projects.html)
 
 ### Miscellaneous Reads
   - [Tail Call Optimizations](http://web.archive.org/web/20111030134120/http://www.sidhe.org/~dan/blog/archives/000211.html)
@@ -81,6 +84,7 @@
 
   - Blogs
     - [ShortJump](http://0xeb.net/)  
+    - [awesome-decompilation](https://github.com/nforest/awesome-decompilation)
 
   - Articles  
     - [Liveness Analysis](https://reverseengineering.stackexchange.com/questions/11238/variable-liveness-analysis-on-binaries)
@@ -138,3 +142,4 @@
     - [What is \_\_init__.py](https://stackoverflow.com/questions/448271/what-is-init-py-for)
   - C++
     - [template specialization](http://www.cplusplus.com/doc/oldtutorial/templates/)
+    - [Namespace](https://docs.microsoft.com/en-us/cpp/cpp/namespaces-cpp?view=vs-2019)

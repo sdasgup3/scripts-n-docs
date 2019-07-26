@@ -109,9 +109,9 @@ mvn package
 ## Stoke/Strata
 ### Stoke
 ```
-./configure.sh
+./configure.sh [-d]
 cd src/ext/x64asm/src
-  sudo update-alternatives --config gcc
+sudo update-alternatives --config gcc
 select gcc 6
 ghc ./Codegen.hs
 ./Codegen
@@ -132,8 +132,35 @@ make -j 8 debug
 tar -xvf ~/Downloads/ideaIC-2017.2.5.tar.gz
 cd idea-IC-172.4343.14/
 ./bin/idea.sh
+```
 
-Application Cnfig VM options:
+### Kprove settings
+```
+Main class: org.kframework.main.Main
+VM options:
+-Xms64m
+-Xmx1024m
+-Xss32m
+-XX:+TieredCompilation
+-Djava.awt.headless=true
+-Djava.library.path="LD_LIBRARY_PATH:/home/sdasgup3/Github/home/sdasgup3/Github/k5/k-distribution/target/release/k//lib/"
+-ea
+
+Program args: -kprove   test-spec.k --directory /home/sdasgup3/Github/binary-decompilation_programV_working/x86-semantics/semantics  --smt_prelude ../basic.smt2
+
+working dir: /home/sdasgup3/Github/binary-decompilation_programV_working/x86-semantics/program-veriifcation/safe_addrptr_32_wo_src_modification
+
+Useclass path: java-backend
+
+```
+
+
+### Krun settings
+```
+Application Config
+Main class: org.kframework.main.Main
+
+VM options:
 -Xms64m -Xmx1024m -Xss32m -XX:+TieredCompilation -Djava.awt.headless=true -Djava.library.path="LD_LIBRARY_PATH:/home/sdasgup3/Github/home/sdasgup3/Github/k5/k-distribution/target/release/k//lib/" -ea
 
 Program Arguments:
@@ -155,7 +182,7 @@ PATH:  /home/sdasgup3/Github/k/k-distribution/target/release/k/lib/native/linux:
 LD_LIBRARY_PATH
 /home/sdasgup3/Github/k/k-distribution/target/release/k//lib/native/linux64/:/home/sdasgup3/Github/k/k-distribution/target/release/k//lib:/home/sdasgup3/Install/oprofile.install//lib/:/home/sdasgup3/.local//lib:/home/sdasgup3/Install/llvm.release.install/lib:/usr/local/lib/
 
-mvn package -DskipTests
+mvn package -DskipTests   -DskipKTest -Dllvm.backend.skip -DskipDocs -Dhaskell.backend.skip   
 
 mvn -e clean verify
 mvn package
@@ -164,6 +191,8 @@ mvn package
 ```
 ./java-backend/src/main/java/org/kframework/backend/java/symbolic/SymbolicRewriter.java:85
 /home/sdasgup3/Github/k/shell/src/main/java/org/kframework/main/Main.java:235
+
+/home/sdasgup3/Github/k/java-backend/src/main/java/org/kframework/backend/java/symbolic/JavaExecutionOptions.java:38:692:677
 ```
 
 ### K framework Known Issues
