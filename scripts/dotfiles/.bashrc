@@ -18,6 +18,11 @@ PROTOBUF=${HOME}/Install/protobuf.install/
 #################### Stoke Config ###############################################
 STOKE_LIB=/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/system/build/gcc-4.9.4/debug/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/regex/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/filesystem/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/strata/stoke/src/ext/cvc4-1.4-build/lib/
 CIRCUIT=/home/sdasgup3/Github/strata-data/circuits/
+POSTGRESSSQL_LIB=/home/sdasgup3/Install/postgresql-11.4.install/lib/
+POSTGRESSSQL_BIN=/home/sdasgup3/Install/postgresql-11.4.install/bin/
+LIBPQXX=/home/sdasgup3/Install/libpqxx-4.0.install/lib/
+
+
 ################## K Config ###########################################
 K_BIN=${HOME}/Github/k/k-distribution/target/release/k/bin
 K_BIN=${HOME}/Github/k/k-distribution/target/release/k/bin
@@ -61,7 +66,8 @@ export NIX_PATH=${NIX_PATH}:allvm=$HOME/.nix-defexpr/channels/allvm
 bind -f  ~/.inputrc
 
 # Stoke 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${STOKE_LIB}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${STOKE_LIB}:${POSTGRESSSQL_LIB}:${LIBPQXX}
+export PATH=${POSTGRESSSQL_BIN}:$PATH
 
 # Pretty Display
 export PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"

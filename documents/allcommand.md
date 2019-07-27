@@ -1,5 +1,51 @@
 # Workflows
 
+## Build [paa-stoke](https://github.com/allvm/pldi19-equivalence-checker)
+1. Install libpg and libpqxx
+  - https://stackoverflow.com/questions/1244778/where-do-i-get-libpq-source
+  - https://www.postgresql.org/docs/current/install-getsource.html
+
+```
+    Switch gcc to 4.9
+    Download 11.4 version from https://www.postgresql.org/ftp/source/
+    gunzip postgresql-11.4.tar.gz
+    tar xf postgresql-11.4.tar
+    cd postgresql-11.4
+    ./configure --prefix=/home/sdasgup3/Install/postgresql-11.4.install
+    Add the following to LD_LIBRARY_PATH and PATH resp.
+    POSTGRESSSQL_LIB=/home/sdasgup3/Install/postgresql-11.4.install/lib/
+    POSTGRESSSQL_BIN=/home/sdasgup3/Install/postgresql-11.4.install/bin/
+
+    Download libpqxx-4.0.tar.gz from http://pqxx.org/download/software/libpqxx/
+    gunzip and untar
+    cd libpqxx-4.0
+    ./configure --prefix=/home/sdasgup3/Install/libpqxx-4.0.install
+    // We might get a error like invalid character class
+    Change
+    LIBS="`echo "$LIBS" | sed -e 's/-lpq[:space:]*[:space:]-lpq\>/-lpq/g'`"
+    to
+    LIBS="`echo "$LIBS" | sed -e 's/-lpq[[:space:]]*[[:space:]]-lpq\>/-lpq/g'`"
+
+    make -j8
+    make install
+    // If required pass
+    // CPPFLAG=-I<postgress include>
+    // LIBS="-lpq"
+    // LDFLAGS=-L<postgres lib path>
+
+    Add LIBPQXX=/home/sdasgup3/Install/libpqxx-4.0.install/lib/ to LD_LIBRARY_PATH
+
+    Clone from https://github.com/allvm/pldi19-equivalence-checker
+    And follow the build instructions in [Stoke]
+    // Note the above branch has the makefile changes to include the libpq and libpqxx paths.
+  ```
+
+## Configure build system
+```
+https://askubuntu.com/questions/386315/how-to-add-libraries-path-to-the-configure-command
+./configure --help
+```
+
 ## LLVM GraphTraits
 ```
 class GraphWriter:
@@ -105,6 +151,7 @@ mvn package
   - working: For artifact evaluation
   - master: Synced with master upstream
   - keq: Separate branch for keq. Note keq is enabled in master as well.
+
 
 ## Stoke/Strata
 ### Stoke
