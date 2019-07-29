@@ -36,9 +36,11 @@
     Add LIBPQXX=/home/sdasgup3/Install/libpqxx-4.0.install/lib/ to LD_LIBRARY_PATH
 
     Clone from https://github.com/allvm/pldi19-equivalence-checker
-    And follow the build instructions in [Stoke]
-    // Note the above branch has the makefile changes to include the libpq and libpqxx paths.
-  ```
+    And follow the build instructions to build stoke
+    1. git clone --recursive  https://github.com/allvm/pldi19-equivalence-checker paa-stoke
+    2. cd  paa-stoke
+    2. Follow the instructions at [Stoke](https://github.com/sdasgup3/scripts-n-docs/blob/master/documents/allcommand.md#stokestrata)
+```
 
 ## Configure build system
 ```
