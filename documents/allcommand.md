@@ -12,6 +12,8 @@
     tar xf postgresql-11.4.tar
     cd postgresql-11.4
     ./configure --prefix=/home/sdasgup3/Install/postgresql-11.4.install
+    make
+    make install
     Add the following to LD_LIBRARY_PATH and PATH resp.
     POSTGRESSSQL_LIB=/home/sdasgup3/Install/postgresql-11.4.install/lib/
     POSTGRESSSQL_BIN=/home/sdasgup3/Install/postgresql-11.4.install/bin/
