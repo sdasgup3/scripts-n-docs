@@ -231,10 +231,11 @@ In that situation remote branch cannot  be fast-forwarded to local. Though, theo
 And what --force option does is just ignoring state of remote branch and setting it to the commit you are pushing into it. So `git push --force origin feature-branch` simply overrides origin/feature-branch with local feature-branch.
 
 
-### Show commited files for a hash
+### Show committed files or diff's for a hash
 
 ```
 git show --stat <commit-hash>
+git diff hash~ hash
 ```
 
 ### Switch branch without detaching head
