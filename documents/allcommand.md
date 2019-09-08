@@ -475,7 +475,7 @@ sudo apt-get install libgtk2.0-0:i386 libsm6:i386
   rm -rf /home/sdasgup3/Github/mcsema_master/mc-sema/validator/x86_64/valTool/val.so
   rm -rf /home/sdasgup3/Github/mcsema_master/mc-sema/validator/x86_64/valTool/val.o
   cd /home/sdasgup3/Github/mcsema_master/mc-sema/validator/x86_64/valTool
-  /usr/bin/g++ -std=gnu++0x   -m64 -DTARGET_IA32E -DHOST_IA32E -DTARGET_LINUX -fPIC -I/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/source/include/pin -I/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/source/include/pin/gen -I/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/extras/components/include -I/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/extras/xed2-intel64/include  -c val.cpp -o val.o
+    /usr/bin/g++ -std=gnu++0x   -m64 -DTARGET_IA32E -DHOST_IA32E -DTARGET_LINUX -fPIC -I/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/source/include/pin -I/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/source/include/pin/gen -I/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/extras/components/include -I/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/extras/xed2-intel64/include  -c val.cpp -o val.o
   /usr/bin/g++  -o val.so val.o -shared -m64 -L/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/intel64/lib/ -L/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/intel64/lib-ext -L/home/sdasgup3/Github/mcsema_master/build/mc-sema/pin/extras/xed2-intel64/lib  -m64 -shared -Wl,--hash-style=sysv -Wl,-Bsymbolic -lpin -lxed -ldwarf -lelf -ldl
   cd -
   ```
@@ -1142,7 +1142,13 @@ fix dependency problems using: sudo apt-get install -f
   sudo apt-get update
   sudo apt-get install libc6-i686:i386 libexpat1:i386 libffi6:i386 libfontconfig1:i386 libfreetype6:i386 libgcc1:i386 libglib2.0-0:i386 libice6:i386 libpcre3:i386 libpng12-0:i386 libsm6:i386 libstdc++6:i386 libuuid1:i386 libx11-6:i386 libxau6:i386 libxcb1:i386 libxdmcp6:i386 libxext6:i386 libxrender1:i386 zlib1g:i386 libx11-xcb1:i386 libdbus-1-3:i386 libxi6:i386 libsm6:i386 libcurl3:i386
   ```
-
+  - Problems with running
+  ```
+  // To work inside screen
+  export TERM=xterm
+  // ImportError: No module named google.protobuf
+  ln -s /usr/local/lib/python2.7/dist-packages/protobuf-3.2.0-py2.7.egg/google /usr/local/lib/python2.7/dist-packages/google
+  ```
 ## irssi
 ```
 /network list
