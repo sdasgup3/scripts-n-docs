@@ -21,6 +21,9 @@
   - [LLVMCallGraph](https://github.com/lihebi/LLVMCallGraph/blob/master/hebicg/hebicg.cpp)
   - [LLVM-Dataflow-Examples](https://github.com/akashlevy/LLVM-Dataflow-Examples)
   - [llvm-dataflow-graphs](https://github.com/k3ut0i/llvm-dataflow-graphs)
+  - [Alive](https://blog.regehr.org/archives/1170)
+    - [Playing with SMT solvers — ALIVe](https://kristerw.blogspot.com/2015/02/playing-with-smt-solvers-alive.html)
+
 - LLBD
   - [LLVM Debugging Tips and Tricks](http://bholt.org/posts/llvm-debugging.html)
 
