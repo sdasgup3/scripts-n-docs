@@ -1,5 +1,24 @@
 ## Git
 
+## Clean history
+### Modifying most recent commit
+```
+git add <>
+git commit --amend
+git push -f
+```
+
+### Modifying any commit
+```
+say we want to modify the commit hash H
+git rebase -i <hash just before H>
+edit<e> the commit under H
+// make the edit and git add
+git rebase --continue
+// edit the commit message for H (if required)
+git push -f
+```
+
 ## Undo
 ### Git pull merge
 ```
@@ -38,21 +57,21 @@ git pull upstream master --rebase
 git add toplev.h toplev.c ; git commit --amend --no-edit
 ```
 
-## Chnage latest commit
+## Change latest commit
 ```
 git commit --amend
 ```
 
-## Chnage previous commit
+## Change previous commit
 ```
 git rebase -i
 change pick to reword
 ```
 
-## Commit a change to previous reveion
+## Commit a change to previous revision
 ```
 git add file
-git commit -m "ABout to merge"
+git commit -m "About to merge"
 git rebase -i
 
 pick R1

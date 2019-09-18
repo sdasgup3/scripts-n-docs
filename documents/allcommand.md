@@ -1,5 +1,10 @@
 # Workflows
 
+## LLVM commands
+```
+opt-6.0 --discard-value-names  ~/Junk/test1.bc -o ~/Junk/test2.bc
+```
+
 ## Build [paa-stoke](https://github.com/allvm/pldi19-equivalence-checker)
 1. Install libpg and libpqxx
   - https://stackoverflow.com/questions/1244778/where-do-i-get-libpq-source
@@ -752,7 +757,7 @@ Symbolic links cc and c++ are installed by default. We will install symbol links
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.3 10
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 20
 
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.3 10
+  sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.3 10
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 20
 
 sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
