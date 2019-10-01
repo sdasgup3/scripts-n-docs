@@ -8,6 +8,14 @@ git commit --amend
 git push -f
 ```
 
+## Checking out branches after the remote was force pushed
+```
+git checkout this_other_branch
+git stash // Just in case you have local changes that would be dropped if you dont stash them
+git fetch
+git reset —-hard origin/this_other_branch
+```
+
 ### Modifying any commit
 ```
 say we want to modify the commit hash H
