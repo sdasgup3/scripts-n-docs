@@ -1,5 +1,113 @@
 # Workflows
 
+## Setup AWS
+### Login
+```
+ssh -Y  -i "aws.pem" ubuntu@ec2-18-223-107-251.us-east-2.compute.amazonaws.com
+```
+### Install Github keys
+```
+Copy ~/.ssh/githubkey_rsa
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/githubkey_rsa
+```
+
+### Download scripts-n-docs
+```
+git clone git@github.com:sdasgup3/scripts-n-docs.git
+Copy .dot files including .screenrc
+```
+
+## Install gcc
+```
+Install gcc
+https://gist.github.com/zuyu/7d5682a5c75282c596449758d21db5ed
+sudo update-alternatives --config gcc
+```
+
+### Install essentials
+```
+sudo apt  install cmake
+sudo apt-get install z3
+sudo apt-get install parallel
+```
+
+### vim
+```
+https://github.com/VundleVim/Vundle.vim)
+```
+
+### Install llvm 4.0.0
+```
+cd ~/Install/llvm
+~/scripts-n-docs/scripts/bash/download-llvm.sh 4.0.0
+mkdir llvm.4.0.0.install llvm.4.0.0.obj
+cd llvm.4.0.0.obj
+cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++  -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DLLVM_TARGETS_TO_BUILD="host" ../llvm-4.0.0.src/
+make -j64
+sudo make install
+
+signal stack problems
+https://github.com/google/sanitizers/issues/822
+https://github.com/llvm-mirror/compiler-rt/commit/8a5e425a68de4d2c80ff00a97bbcb3722a4716da
+```
+
+### Install Stoke
+```
+sudo apt-get install bison ccache cmake doxygen exuberant-ctags flex  g++-multilib  ghc git libantlr3c-dev libboost-dev libboost-filesystem-dev libboost-thread-dev libcln-dev libghc-regex-compat-dev libghc-regex-tdfa-dev libghc-split-dev libjsoncpp-dev python subversion libiml-dev libgmp-dev libboost-regex-dev autoconf libtool antlr pccts pkg-config
+cd ~/github
+git clone --recursive   git@github.com:sdasgup3/stoke.git stoke-develop
+cd  stoke-develop/src/ext/z3
+git checkout master
+cd /home/ubuntu/Github/stoke-develop/src/ext/z3
+./configure.sh -d
+cd /home/ubuntu/Github/stoke-develop/src/ext/x64asm
+make -j64 debug
+cd /home/ubuntu/Github/stoke-develop
+mkdir lib
+make -j64 debug
+```
+
+### Install mcsema
+```
+sudo apt-get install      git      curl      cmake      python2.7 python-pip python-virtualenv      wget      build-essential      gcc-multilib g++-multilib      libtinfo-dev      lsb-release            zlib1g-dev
+sudo dpkg --add-architecture i386
+sudo apt-get install zip zlib1g-dev:i386
+
+git clone --depth 1 git@github.com:sdasgup3/mcsema.git
+export REMILL_VERSION=`cat ./mcsema/.remill_commit_id`
+
+git clone https://github.com/trailofbits/remill.git
+cd remill
+git checkout -b temp ${REMILL_VERSION}
+
+mv ../mcsema tools
+./scripts/build.sh
+cd remill-build
+sudo make install -j64
+```
+
+## Install IDA
+```
+cd ~/Github
+git clone https://gitlab.engr.illinois.edu/llvm/IDA.git
+Install Ida_software/*.run
+echo "HEXRAYS_LICENSE_FILE=@presto.cs.illinois.edu" > ~/.flexlmrc
+sudo apt-get install libc6-i686:i386 libexpat1:i386 libffi6:i386 libfontconfig1:i386 libfreetype6:i386 libgcc1:i386 libglib2.0-0:i386 libice6:i386 libpcre3:i386  libsm6:i386 libstdc++6:i386 libuuid1:i386 libx11-6:i386 libxau6:i386 libxcb1:i386 libxdmcp6:i386 libxext6:i386 libxrender1:i386 zlib1g:i386 libx11-xcb1:i386 libdbus-1-3:i386 libxi6:i386 libsm6:i386 libcurl3:i386
+~/ida-6.95/idal64
+```
+
+## Install K
+```
+git clone  git@github.com:kframework/k.git
+git submodule update --init --recursive
+sudo apt-get install build-essential m4 openjdk-8-jdk libgmp-dev libmpfr-dev pkg-config flex z3 libz3-dev maven opam python3 cmake  zlib1g-dev bison libboost-test-dev libyaml-dev libjemalloc-dev
+sudo apt install curl
+curl -sSL https://get.haskellstack.org/ | sh
+mvn package -DskipTests   -DskipKTest -Dllvm.backend.skip -DskipDocs -Dhaskell.backend.skip  
+```
+
+
 ## LLVM commands
 ```
 opt-6.0 --discard-value-names  ~/Junk/test1.bc -o ~/Junk/test2.bc

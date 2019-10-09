@@ -1,3 +1,37 @@
+# Order
+```
+opt -S   -mem2reg -dce binary_search.bin.unoptimized.ll   -o test.wip.ll
+```
+
+
+# Keeping the existing Mcsema pipeline (w/o any change in Function.cpp)
+```
+opt -S -inline -simplifycfg  test.proposed.ll   -o test.proposed.inline.ll
+opt -S -early-cse test.proposed.inline.ll -o test.proposed.early-cse.ll
+opt -S -dse test.proposed.early-cse.ll -o test.proposed.dse.ll
+// -dse is not working in non-inlined functions.
+
+opt -S -inline -simplifycfg  -mem2reg -dce -dse -early-cse test.proposed.ll   -o test.proposed.opt.ll
+
+
+opt -S -inline -simplifycfg  binary_search.bin.unoptimized.ll   -o binary_search.bin.unoptimized.inline.ll
+binary_search.bin.unoptimized.inline.ll --> test.inline.ll
+
+opt -S -early-cse test.inline.ll -o test.inline.early-cse.ll
+opt -S -dse test.inline.early-cse.ll -o test.inline.dse.ll
+
+opt -S  -mem2reg -dce -dse -early-cse -dce test.inline.ll   -o test.inline.opt.ll
+
+```
+
+
+# Validating decompilers
+  - What is a simulation relation
+    - http://www.dis.uniroma1.it/degiacom/didattica/software-services/aa2013-14/lectures/week2%20-%20simulation%20vs%20bisimulation/2-Bisimulation%20&%20Simulation2up.pdf
+    -
+  - What is DSE doing? How can I implement one
+  - How to get the memory read/write info from info from Stoke
+  - Draw the DSE-ed dfg and check if we have other prereq.
 
 # Preliminary Exam
   - Member
