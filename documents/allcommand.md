@@ -39,10 +39,12 @@ https://github.com/VundleVim/Vundle.vim)
 
 ### Install llvm 4.0.0
 ```
+mkdir -p ~/Install/llvm
 cd ~/Install/llvm
 ~/scripts-n-docs/scripts/bash/download-llvm.sh 4.0.0
 mkdir llvm.4.0.0.install llvm.4.0.0.obj
 cd llvm.4.0.0.obj
+INSTALL_PREFIX=/home/sdasgup3/Install/llvm/llvm.4.0.0.install
 cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++  -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DLLVM_TARGETS_TO_BUILD="host" ../llvm-4.0.0.src/
 make -j64
 sudo make install
@@ -95,6 +97,16 @@ Install Ida_software/*.run
 echo "HEXRAYS_LICENSE_FILE=@presto.cs.illinois.edu" > ~/.flexlmrc
 sudo apt-get install libc6-i686:i386 libexpat1:i386 libffi6:i386 libfontconfig1:i386 libfreetype6:i386 libgcc1:i386 libglib2.0-0:i386 libice6:i386 libpcre3:i386  libsm6:i386 libstdc++6:i386 libuuid1:i386 libx11-6:i386 libxau6:i386 libxcb1:i386 libxdmcp6:i386 libxext6:i386 libxrender1:i386 zlib1g:i386 libx11-xcb1:i386 libdbus-1-3:i386 libxi6:i386 libsm6:i386 libcurl3:i386
 ~/ida-6.95/idal64
+
+https://answers.uillinois.edu/illinois/page.php?id=47640
+
+scp -v  -i  aws.pem  ~/Desktop/anyconnect-linux64-4.7.02036-predeploy-k9.tar.gz ubuntu@ec2-13-58-59-241.us-east-2.compute.amazonaws.com:
+/opt/cisco/anyconnect/bin/vpn -s connect vpn.cites.illinois.edu
+ /opt/cisco/anyconnect/bin/vpn disconnect
+
+ Connect via vnc
+ https://medium.com/@Arafat./graphical-user-interface-using-vnc-with-amazon-ec2-instances-549d9c0969c5
+ ~/Desktop/VNC-Viewer-6.19.923-Linux-x64 localhost:5902
 ```
 
 ## Install K
