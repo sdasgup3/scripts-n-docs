@@ -61,7 +61,9 @@ cd ~/github
 git clone --recursive   git@github.com:sdasgup3/stoke.git stoke-develop
 cd  stoke-develop/src/ext/z3
 git checkout master
-cd /home/ubuntu/Github/stoke-develop/src/ext/z3
+cd /home/ubuntu/Github/stoke-develop/src/ext/x64asm
+git checkout working
+cd /home/ubuntu/Github/stoke-develop/
 ./configure.sh -d
 cd /home/ubuntu/Github/stoke-develop/src/ext/x64asm
 make -j64 debug
