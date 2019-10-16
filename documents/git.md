@@ -13,7 +13,7 @@ git push -f
 git checkout this_other_branch
 git stash // Just in case you have local changes that would be dropped if you dont stash them
 git fetch
-git reset —-hard origin/this_other_branch
+git reset --hard origin/master
 ```
 
 ### Modifying any commit

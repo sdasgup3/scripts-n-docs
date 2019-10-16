@@ -103,12 +103,18 @@ sudo apt-get install libc6-i686:i386 libexpat1:i386 libffi6:i386 libfontconfig1:
 https://answers.uillinois.edu/illinois/page.php?id=47640
 
 scp -v  -i  aws.pem  ~/Desktop/anyconnect-linux64-4.7.02036-predeploy-k9.tar.gz ubuntu@ec2-13-58-59-241.us-east-2.compute.amazonaws.com:
+
+/opt/cisco/anyconnect/bin/vpnui
 /opt/cisco/anyconnect/bin/vpn -s connect vpn.cites.illinois.edu
- /opt/cisco/anyconnect/bin/vpn disconnect
+/opt/cisco/anyconnect/bin/vpn disconnect
 
  Connect via vnc
  https://medium.com/@Arafat./graphical-user-interface-using-vnc-with-amazon-ec2-instances-549d9c0969c5
  ~/Desktop/VNC-Viewer-6.19.923-Linux-x64 localhost:5902
+
+ sudo pip install google
+ sudo pip install protobuf
+ touch /home/ubuntu/.local/lib/python2.7/site-packages/google/__init__.py
 ```
 
 ## Install K
@@ -121,6 +127,10 @@ curl -sSL https://get.haskellstack.org/ | sh
 mvn package -DskipTests   -DskipKTest -Dllvm.backend.skip -DskipDocs -Dhaskell.backend.skip  
 ```
 
+## Boost linker flags
+```
+-lboost_system -lboost_filesystem
+```
 
 ## LLVM commands
 ```
