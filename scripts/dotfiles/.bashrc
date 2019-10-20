@@ -46,6 +46,7 @@ export LD_LIBRARY_PATH=${LLVM_HOME}/lib:${PROTOBUF}/lib:${K_LIB}:${PIP_INSTALLS}
 export R_LIBS=${HOME}/Install/R_LIBS/
 export MCSEMA_HOME=${HOME}/Github/mcsema_latest_master/
 export TRAILOFBITS_LIBRARIES=/home/sdasgup3/Github/cxx-common/libraries
+export LLVM_COMPILER=clang
 
 
 # Git commands

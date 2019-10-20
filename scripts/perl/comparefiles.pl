@@ -10,7 +10,11 @@ use Cwd;
 use File::Path qw(make_path remove_tree);
 use Env;
 
-use lib qw( /home/sdasgup3/scripts-n-docs/scripts/perl/ );
+BEGIN {
+    my $script_dir = dirname(__FILE__);
+    unshift @INC, $script_dir;
+}
+
 use utils;
 
 # Using GetOPtions

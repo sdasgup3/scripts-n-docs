@@ -1,5 +1,24 @@
 ## Git
 
+## No push to a remote
+```
+git remote set-url --push origin no_push
+```
+
+## Clean up a fork and restart it from the upstream
+```
+git remote add upstream /url/to/original/repo
+git fetch upstream
+git checkout master
+git reset --hard upstream/master  
+git push origin master --force
+```
+
+## Remove from git history
+```
+https://help.github.com/en/articles/removing-files-from-a-repositorys-history
+```
+
 ## Clean history
 ### Modifying most recent commit
 ```

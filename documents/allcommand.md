@@ -125,6 +125,9 @@ sudo apt-get install build-essential m4 openjdk-8-jdk libgmp-dev libmpfr-dev pkg
 sudo apt install curl
 curl -sSL https://get.haskellstack.org/ | sh
 mvn package -DskipTests   -DskipKTest -Dllvm.backend.skip -DskipDocs -Dhaskell.backend.skip  
+
+KPROVE_OPTS=--log-cells "(\#initTerm),(\#target),(\#result),(registers),(memory)" --log-basic  --state-log --log-success --no-alpha-renaming --restore-original-names --debug-formulas
+
 ```
 
 ## Boost linker flags
@@ -1337,6 +1340,14 @@ Cntrl-a k // kill current window
 Cheatsheet: https://gist.github.com/MohamedAlaa/2961058
 tmux Plugin: https://github.com/tmux-plugins/tpm
 tmux-resurrect
+
+From tmux
+:source-file ~/.tmux.conf
+Or simply from a shell:
+$ tmux source-file ~/.tmux.conf
+
+Copy the text: select the text and press mouse left-button with shift key press too.
+Paste the text with shift key + middle-button
 ```
 
 ## LLVM_BUILTIN_DEBUGTRAP
