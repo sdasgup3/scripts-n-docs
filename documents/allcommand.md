@@ -343,6 +343,23 @@ working dir: /home/sdasgup3/Github/binary-decompilation_programV_working/x86-sem
 
 Useclass path: java-backend
 
+
+"$0" "$run_mode" --backend java "$run_file" \
+       --state-log --state-log-path "$KLAB_OUT/data" --state-log-id "$klab_log" \
+       --state-log-events OPEN,EXECINIT,SEARCHINIT,REACHINIT,REACHTARGET,REACHPROVED,NODE,RULE,SRULE,RULEATTEMPT,IMPLICATION,Z3QUERY,Z3RESULT,CLOSE
+       --output-flatten "_Map_ #And" \
+       --output-tokenize "_;__EVM ___EVM ____EVM _____EVM" \
+       --output-omit "<programBytes> <program> <code> <callGas> <touchedAccounts> <interimStates> <callStack> <callData>" \
+       --no-alpha-renaming --restore-original-names --no-sort-collections \
+       --output json \
+       "$@"
+
+       --state-log --state-log-path SOME_DIR --state-log-id NAME_OF_OPCODE --state-log-events REACHPROVED,REACHUNPROVED --no-alpha-renaming --restore-original-names --output json
+       --output-flatten "_Map_ #And"
+       #And(#And(V1, V2), V3) => #And(V1,V2,V3)
+       _Map_(_Map_(K1 |-> V1, K2 |-> V2), K3 |-> V3) => _Map_(K1 |-> V1, K2 |-> V2, K3 |-> V3)
+       cat json_file | jq . | less
+
 ```
 
 
