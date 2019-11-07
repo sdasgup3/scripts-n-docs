@@ -64,6 +64,7 @@ map Q :q
 map N :n
 map k gf
 map l :bf
+map <C-o> :NERDTreeToggle<CR>
 
 " Plugins management
 " set nocompatible              " be iMproved, required
@@ -83,7 +84,9 @@ call vundle#begin()
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 "Plugin 'tpope/vim-fugitive'
-"Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
+Plugin 'junegunn/fzf'
+Plugin 'itchyny/lightline.vim'
 "Plugin 'valloric/youcompleteme'
 
 " All of your Plugins must be added before the following line
