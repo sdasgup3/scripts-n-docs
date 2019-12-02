@@ -1,9 +1,59 @@
 # Workflows
 
+## Setup SVF
+```
+~/scripts-n-docs/scripts/bash/download-llvm.sh 9.0.0  fast
+mkdir llvm-9.0.0.install
+mkdir llvm-9.0.0.obj
+cd !$
+cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++  -DCMAKE_INSTALL_PREFIX=/home/ubuntu/Install/llvm/llvm-9.0.0.install/ -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE="Debug" -DLLVM_TARGETS_TO_BUILD="host" ../llvm-9.0.0.src/
+make -j64; make -j64 install
+export LLVM_SRC=/home/ubuntu/Install/llvm/llvm-9.0.0.src
+export LLVM_OBJ=/home/ubuntu/Install/llvm/llvm-9.0.0.obj
+export LLVM_DIR=/home/ubuntu/Install/llvm/llvm-9.0.0.obj
+export PATH=$LLVM_DIR/bin:$PATH
+
+git clone https://github.com/SVF-tools/SVF.git SVF
+cd SVF
+mkdir Debug-build
+cd Debug-build
+cmake -D CMAKE_BUILD_TYPE:STRING=Debug ../
+make -j64
+```
+
+## Setup dg
+```
+git clone https://github.com/mchalupa/dg
+cd dg
+## The following will cause problems with make check
+#mkdir build
+#cd build
+
+cmake \
+  -DLLVM_SRC_PATH=~/Install/llvm/llvm-4.0.0.src/ \
+  -DLLVM_BUILD_PATH=~/Install/llvm/llvm.4.0.0.obj/ \
+  -DLLVM_DIR=~/Install/llvm/llvm.4.0.0.obj \
+  -DCMAKE_BUILD_TYPE="Debug" ..
+make -j64
+make check
+```
+
+## Memory dependencies
+- memssa
+  ```
+  opt -passes='print<memoryssa>' -disable-output -debug-pass=Structure
+  opt  --memoryssa -analyze  test1.bc
+  opt --cfl-anders-aa  --memoryssa -analyze  test3.ll
+  ```
+- svf
+  ```
+  wpa -ander -svfg -dump-mssa test3.ll &> test3.memssa
+  ```
+
 ## Setup AWS
 ### Login
 ```
-ssh -Y  -i "aws.pem" ubuntu@ec2-18-223-107-251.us-east-2.compute.amazonaws.com
+ssh -i "aws.pem" ubuntu@ec2-13-58-59-241.us-east-2.compute.amazonaws.com
 ```
 ### Install Github keys
 ```
