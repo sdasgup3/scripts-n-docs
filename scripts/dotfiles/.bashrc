@@ -21,6 +21,7 @@ CIRCUIT=/home/sdasgup3/Github/strata-data/circuits/
 POSTGRESSSQL_LIB=/home/sdasgup3/Install/postgresql-11.4.install/lib/
 POSTGRESSSQL_BIN=/home/sdasgup3/Install/postgresql-11.4.install/bin/
 LIBPQXX=/home/sdasgup3/Install/libpqxx-4.0.install/lib/
+export COMPD_CACHE=${HOME}/Junk/compd_cache/
 
 
 ################## K Config ###########################################
@@ -54,12 +55,17 @@ git config --global user.name "Sandeep Dasgupta"
 git config --global user.email "sdasgup3@illinois.edu"
 
 # prompt
-set-title(){
-# ORIG=$PS1
-  TITLE="\e]2;$@\a"
-#PS1=${ORIG}${TITLE}
+#set-title(){
+## ORIG=$PS1
+#  TITLE="\e]2;$@\a"
+##PS1=${ORIG}${TITLE}
+#}
+#PS1='_____________________________________________________________________________________________________________________________________\n\W| '
+
+function _update_ps1() {
+   export PS1="$(~/scripts-n-docs/scripts/dotfiles/powerline.js $? --shell bash --depth 4)"
 }
-PS1='_____________________________________________________________________________________________________________________________________\n\W| '
+export PROMPT_COMMAND="_update_ps1"
 
 # Nix
 export NIX_PATH=${NIX_PATH}:allvm=$HOME/.nix-defexpr/channels/allvm
@@ -85,3 +91,19 @@ echo "=================================================="
 whoami| figlet
 
 #ssh -X sdasgup3@tyler.cs.illinois.edu
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sdasgup3/anaconda2/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sdasgup3/anaconda2/etc/profile.d/conda.sh" ]; then
+        . "/home/sdasgup3/anaconda2/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sdasgup3/anaconda2/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

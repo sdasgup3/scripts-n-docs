@@ -14,7 +14,7 @@ alias gitc='/home/sdasgup3/Programming/Scripting/Bash/gitc.sh'
 #alias zesti='/home/sdasgup3/Documents/klee-zesti/zesti.obj/Release+Asserts/bin/klee --zest'
 alias julia='/home/sdasgup3/Install/julia/julia'
 alias cc='/usr/bin/gcc'
-alias infopl="/home/sdasgup3/Github/binary-decompilation/x86-semantics/scripts/infonum.pl"
+alias infopl="/home/sdasgup3/scripts-n-docs/scripts/perl/infonum.pl"
 alias idea="/home/sdasgup3/Install/idea-IC-172.4343.14/bin/idea.sh"
 
 alias sc="/home/sdasgup3/Github/strata/stoke/bin/stoke_debug_circuit"
@@ -38,3 +38,4 @@ alias perltidy="perltidy -b"
 alias mcsema_out="/home/sdasgup3/Github/binary-decompilation/x86-semantics/scripts/mcsema_out.sh"
 alias grep="grep --color"
 alias astyle="~/Github/strata/stoke/src/ext/astyle/build/gcc/bin/astyle"
+alias conda="~/anaconda2/bin/conda"

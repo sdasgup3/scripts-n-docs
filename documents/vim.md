@@ -1,3 +1,10 @@
+## Record and Replay
+  1. Start recording by pressing q, followed by a lower case character to name the macro
+  2. Perform any typical editing, actions inside Vim editor, which will be recorded
+  3. Stop recording by pressing q
+  4. Play the recorded macro by pressing @ followed by the macro name
+  5. To repeat macros multiple times, press "NN @ macro name". NN is a number
+
 ## Join n consecutive lines
 ```
 :g/^/,+n join
@@ -117,16 +124,6 @@ directory and add the following to your ~/.vimrc file
 au BufRead,BufNewFile *.k set filetype=kframework
 au! Syntax kframework source kframework.vim
 syn on
-```
-
-### Plugin management
-  - [Instructions](https://github.com/VundleVim/Vundle.vim)
-
-```
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-insert the code in .vimrc
-or add more plugins from https://vimawesome.com/
-Launch vim and run :source % and :PluginInstall
 ```
 
 

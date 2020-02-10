@@ -49,6 +49,19 @@ make check
   ```
   wpa -ander -svfg -dump-mssa test3.ll &> test3.memssa
   ```
+- dg
+```
+../dg/tools/llvm-dg-dump test3.ll > test3.dg.dot
+```
+- PA
+```
+opt -basicaa -aa-eval -print-all-alias-modref-info  pa3.ll -disable-output -debug-pass=Structure/Arguments
+```
+- memdep
+```
+  opt -memdep -print-memdeps -gvn -analyze test_2.ll
+```
+
 
 ## Setup AWS
 ### Login

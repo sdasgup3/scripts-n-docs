@@ -1,4 +1,8 @@
 ## Git
+## Remove sensitive data permanently from the github history
+```
+https://help.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository
+```
 
 ## No push to a remote
 ```
@@ -335,6 +339,13 @@ git commit -m "updating submodule to latest"
 // First time
 git submodule update --init --recursive
 git clone --recursive <project url> // will clone the parent module and all its submodule
+
+/ After Clone
+git submodule init
+git submodule update
+cd ../../..submodule
+git status
+git checkout master
 
 // Remove
 git submodule deinit -f -- submodule
