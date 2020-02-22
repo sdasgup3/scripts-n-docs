@@ -5,7 +5,7 @@ tab=" --tab"
 options=()  #(--tab --title=Terminal)
 
 cmds[0]="cd   /home/sdasgup3/Github/PLDI20-Validating-Decompilers"
-cmds[1]="cd   /home/sdasgup3/Github/validating-binary-decompilation/docs/phd-thesis/defence-doc/"
+cmds[1]="cd   ~/Github/phd-thesis/defence-doc/"
 cmds[2]="cd   /home/sdasgup3/Github/validating-binary-decompilation/source/build/"
 cmds[3]="cd   /home/sdasgup3/Github/validating-binary-decompilation/source/"
 cmds[4]="cd  /home/sdasgup3/Github/stoke-develop"
@@ -23,6 +23,7 @@ cmds[15]="cd   ~/Github/validating-binary-decompilation/tests/program_translatio
 cmds[16]="cd  ~/Github/validating-binary-decompilation/tests/compositional_artifacts_single_instruction_decompilation"
 cmds[17]="cd  ~/Junk"
 cmds[18]="cd  /home/sdasgup3/Github/validating-binary-decompilation/docs"
+cmds[19]="cd  /home/sdasgup3/Github/PLDI-2020-Artifact-Evaluation"
 
 titles[0]="paper"
 titles[1]="defence-doc"
@@ -43,8 +44,9 @@ titles[15]="tests3"
 titles[16]="single-instr-test"
 titles[17]="tyler"
 titles[18]="aws"
+titles[18]="AE"
 
-for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18; do
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19; do
   options+=($tab --title="${titles[i]}"  -e "bash -c \"${cmds[i]} ; bash\"" )
 done
 
