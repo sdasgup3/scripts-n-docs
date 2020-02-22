@@ -27,14 +27,9 @@ sudo apt-get install nodejs
 . ~/.bashrc
 . ~/.aliases
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# open gvim and type :PluginInstall
 ```
 
-
-### Download scripts-n-docs
-```
-git clone git@github.com:sdasgup3/scripts-n-docs.git
-Copy .dot files including .screenrc
-```
 
 ## Install gcc
 ```
