@@ -293,6 +293,7 @@ cabal new-build exe:reopt
 
 ## VM up and running
 ```
+Share folder: https://help.ubuntu.com/community/VirtualBox/SharedFolders
 sudo apt-get install virtualbox-5.1
 sudo apt-get install vim-gnome git figlet curl htop z3 parallel
 gvim ~/.ssh/githubkey_rsa
