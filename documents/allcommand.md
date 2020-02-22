@@ -28,6 +28,8 @@ sudo apt-get install nodejs
 . ~/.aliases
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # open gvim and type :PluginInstall
+
+sudo apt-get install cmake z3 parallel
 ```
 
 
