@@ -310,6 +310,9 @@ ln -s scripts-n-docs/scripts/dotfiles/.aliases ~/
 . ~/.aliases
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
+### Troubleshoot
+1. [Black Screen](https://askubuntu.com/questions/1134892/ubuntu-18-04-lts-on-virtualbox-boots-up-but-black-login-screen)
+
 
 ## Working with Binaries
 ```
