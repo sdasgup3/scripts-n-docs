@@ -21,7 +21,7 @@ CIRCUIT=/home/sdasgup3/Github/strata-data/circuits/
 POSTGRESSSQL_LIB=/home/sdasgup3/Install/postgresql-11.4.install/lib/
 POSTGRESSSQL_BIN=/home/sdasgup3/Install/postgresql-11.4.install/bin/
 LIBPQXX=/home/sdasgup3/Install/libpqxx-4.0.install/lib/
-export COMPD_CACHE=${HOME}/Junk/compd_cache/
+export COMPD_CACHE=${HOME}/Github/compd_cache/
 
 
 ################## K Config ###########################################
