@@ -1,18 +1,37 @@
 # Workflows
 
-## Setup system
-### Install Github keys
+## VM up and running
 ```
-Copy ~/.ssh/githubkey_rsa
+Share folder: https://help.ubuntu.com/community/VirtualBox/SharedFolders
+sudo apt-get install virtualbox-5.1
+sudo apt-get install vim-gnome git figlet curl htop z3 parallel
+gvim ~/.ssh/githubkey_rsa
+chmod 700 !$
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/githubkey_rsa
+mkdir Github
+sudo apt-get install git vim-gnome
+git clone git@github.com:sdasgup3/scripts-n-docs.git
+rm -rf ~/.bashrc ~/.vimrc ~/.inputrc ~/.aliases
+ln -s scripts-n-docs/scripts/dotfiles/.bashrc ~/
+ln -s scripts-n-docs/scripts/dotfiles/.vimrc ~/
+ln -s scripts-n-docs/scripts/dotfiles/.inputrc ~/
+ln -s scripts-n-docs/scripts/dotfiles/.aliases ~/
+
+#Install Node:
+#https://tecadmin.net/install-latest-nodejs-npm-on-ubuntu/
+sudo apt-get install curl
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install nodejs
+
+. ~/.bashrc
+. ~/.aliases
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# open gvim and type :PluginInstall
+
+sudo apt-get install cmake z3 parallel
 ```
 
-### Download scripts-n-docs
-```
-git clone git@github.com:sdasgup3/scripts-n-docs.git
-Copy .dot files including .screenrc
-```
 
 ## Install gcc
 ```
