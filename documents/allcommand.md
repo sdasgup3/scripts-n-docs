@@ -2,7 +2,8 @@
 
 ## VM up and running
 ```
-Share folder: https://help.ubuntu.com/community/VirtualBox/SharedFolders
+#Share folder: https://help.ubuntu.com/community/VirtualBox/SharedFolders
+mkdir -p ~/host; sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host
 sudo apt-get install virtualbox-5.1
 sudo apt-get install vim-gnome git figlet curl htop z3 parallel
 gvim ~/.ssh/githubkey_rsa
@@ -82,10 +83,11 @@ cd ~/github
 git clone --recursive   git@github.com:sdasgup3/stoke.git stoke-develop
 cd  stoke-develop/src/ext/z3
 git checkout master
+git checkout 4192c81fae01e90fd8110a00b14172be818f028b
 cd /home/ubuntu/Github/stoke-develop/src/ext/x64asm
 git checkout working
 cd /home/ubuntu/Github/stoke-develop/
-./configure.sh -d
+./configure.sh -d --no-cvc4
 cd /home/ubuntu/Github/stoke-develop/src/ext/x64asm
 make -j64 debug
 cd /home/ubuntu/Github/stoke-develop
@@ -309,29 +311,6 @@ sudo ln -s /opt/cabal/bin/cabal-2.2 /usr/bin/cabal
 cabal update
 cabal new-build exe:reopt
 ```
-
-## VM up and running
-```
-Share folder: https://help.ubuntu.com/community/VirtualBox/SharedFolders
-sudo apt-get install virtualbox-5.1
-sudo apt-get install vim-gnome git figlet curl htop z3 parallel
-gvim ~/.ssh/githubkey_rsa
-chmod 700 !$
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/githubkey_rsa
-mkdir Github
-git clone git@github.com:sdasgup3/scripts-n-docs.git
-ln -s scripts-n-docs/scripts/dotfiles/.bashrc ~/
-ln -s scripts-n-docs/scripts/dotfiles/.vimrc ~/
-ln -s scripts-n-docs/scripts/dotfiles/.inputrc ~/
-ln -s scripts-n-docs/scripts/dotfiles/.aliases ~/
-. ~/.bashrc
-. ~/.aliases
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-```
-### Troubleshoot
-1. [Black Screen](https://askubuntu.com/questions/1134892/ubuntu-18-04-lts-on-virtualbox-boots-up-but-black-login-screen)
-
 
 ## Working with Binaries
 ```
