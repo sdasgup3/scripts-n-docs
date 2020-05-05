@@ -1,4 +1,4 @@
-colorscheme torte
+colorscheme default
 
 "set textwidth=80
 set autoindent

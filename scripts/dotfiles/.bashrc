@@ -14,6 +14,7 @@ PIP_INSTALLS=${HOME}/.local/
 OPROFILE=${HOME}/Install/oprofile.install/
 IDA=${HOME}/ida-6.95/
 PROTOBUF=${HOME}/Install/protobuf.install/
+GITLFS=${HOME}/Install/git-lfs/
 
 #################### Stoke Config ###############################################
 STOKE_LIB=/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/system/build/gcc-4.9.4/debug/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/regex/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/boost_1_65_1/bin.v2/libs/filesystem/build/gcc-4.9.4/release/threading-multi/:/home/sdasgup3/Install/strata/stoke/src/ext/cvc4-1.4-build/lib/
@@ -42,7 +43,7 @@ export MAVEN_OPTS=-XX:+TieredCompilation
  . /home/sdasgup3/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 
-export PATH=${LLVM_HOME}/bin:${PROTOBUF}/bin:${IDA}:${K_BIN}:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:$PATH
+export PATH=${GITLFS}:${LLVM_HOME}/bin:${PROTOBUF}/bin:${IDA}:${K_BIN}:${OPROFILE}/bin/:${PIP_INSTALLS}/bin:$PATH
 export LD_LIBRARY_PATH=${LLVM_HOME}/lib:${PROTOBUF}/lib:${K_LIB}:${PIP_INSTALLS}/lib:/usr/local/lib/:$LD_LIBRARY_PATH
 export R_LIBS=${HOME}/Install/R_LIBS/
 export MCSEMA_HOME=${HOME}/Github/mcsema_latest_master/

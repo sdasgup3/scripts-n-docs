@@ -703,6 +703,7 @@ https://stackoverflow.com/questions/2263404/what-package-i-should-install-for-pc
   ```
 
 ### Pip
+    - https://pip.pypa.io/en/stable/installing/
     - Installing
     ```
     $ curl -O
